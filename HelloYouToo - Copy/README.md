@@ -1,2 +1,0 @@
-# ProjectR
-Mūsu projektam
