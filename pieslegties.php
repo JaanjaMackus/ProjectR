@@ -2,6 +2,7 @@
 <div class='Saturs'>
     <div class='Vidus_Mazais'>
         <h3 class='Atstarpe_Auksa'>Pieslēgšanās forma</h3>
+        <h3 class='Atstarpe_Auksa'>Pieslēgšanās forma</h3>
         <?php
         if(count($Kludas)>0){
         foreach ($Kludas as $Kluda){

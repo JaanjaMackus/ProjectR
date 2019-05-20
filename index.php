@@ -6,6 +6,14 @@
 //sarkans DD0000
 //tumsais 062836
 
+//peleks/ aabbcc
+//sarkans DD0000
+//tumsais 062836
+//peleks/ aabbcc
+//sarkans DD0000
+//tumsais 062836
+
+
 session_start();
 ?>
 <!DOCTYPE html>
