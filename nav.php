@@ -1,4 +1,3 @@
-
 <div id="Nav_Turetajs">
     <h1 class="Logo">ProData</h1>
     <input type="checkbox" id="Nav_Poga" class="Nav_Poga">

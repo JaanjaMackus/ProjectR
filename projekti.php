@@ -22,7 +22,7 @@ session_start();
     <div id="Atstarpe"></div>
     <div class="Saturs Saturs_Smalks">
         <div class="Smalks_Pilns">
-            <h1>Projekta nosaukums</h1>
+            <h1>Projekta nosaukums (piemērs kā izskatīsies kad uzspiests uz konkrēta projekta) todo: izveidot vispārīgu skatu kur visus vai vairākus publiskos projektus redzēt</h1>
             <p class="apraksts">projekta apraksts Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
         </div>
         <div class="dalibnieks"><h3>Vards Uzvards</h3><p class="apraksts">stradaja pie sensoriem, kur jūtas ļoti labi, jo sensori viņu saprot</p>
@@ -38,6 +38,9 @@ session_start();
         <div class="dalibnieks"><h3>Vards Uzvards5</h3><p class="apraksts">stradaja pie sat Hampden-Sydney College in Virginia, looked up one of the morenorum et Malorum"ensoriem, kur jūtas ļoti labi, jo sensori viņu saprot</p>
         </div>
         <div class="dalibnieks"><h3>Vards Uzvards6</h3><p class="apraksts">stradaja of "de Finibus Bonorum et Malorum"e sensoriem, kur jūtas ļoti labi, jo sensori viņu saprot</p>
+        </div>
+        <div class="Smalks_Pilns Vizualizesanai">
+            <h1>Vieta kur būs datu filtrēšana un attēlošana</h1>
         </div>
     </div>
 </body>

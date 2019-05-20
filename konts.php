@@ -1,4 +1,4 @@
-<?php include('konts_parbaude.php') ?>
+<?php include('konts_parbaude.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -10,19 +10,11 @@
 
 
 <body>
-    <?php include('nav.php'); 
+    <?php include('nav.php');
     
     if(isset($_SESSION['Lietotajvards'])){
-        echo "
-            <div id='Atstarpe'></div><div class='Saturs Saturs_Smalks'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            ";
+        echo "<div id='Atstarpe'></div><div class='Saturs Saturs_Smalks'>";
+        include('konts_nav.php');
         
         
     }else{
