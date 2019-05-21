@@ -1,4 +1,4 @@
-<div id='Atstarpe'></div>
+<div class='Atstarpe'></div>
 <div class='Saturs'>
     <div class='Vidus_Mazais'>
         <h3 class='Atstarpe_Auksa'>Pieslēgšanās forma</h3>
@@ -9,7 +9,7 @@
         }
         } ?>
         <form method='post' action='konts.php'>
-            <input value='<?php echo $Lietotajvards ?>' type='text' name='Lietotajvards' class='Ievade_Ievads' placeholder='Lietotājvārds' autofocus>
+            <input value='<?php echo $E_Pasts ?>' type='text' name='E_Pasts' class='Ievade_Ievads' placeholder='E-pasts' autofocus>
             <input type='password' name='Parole' class='Ievade_Ievads' placeholder='Parole'>
             <input type='submit' name='Pieslegt_Lietotaju' value='Pieslēgties' class='Ievade_Poga'>
         </form>

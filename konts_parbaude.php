@@ -1,33 +1,32 @@
 <?php
 session_start();
-$Lietotajvards = "";
+$E_Pasts = "";
 $Parole    = "";
 $Kludas = array(); 
 
 // datubāzes konekcija
-$Datu_Baze = mysqli_connect('localhost', 'root', '', 'registration');
+include('db.php');
 
 if(isset($_POST['Pieslegt_Lietotaju'])){
-    $Lietotajvards = mysqli_real_escape_string($Datu_Baze, $_POST['Lietotajvards']);
+    $E_Pasts = mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts']);
     $Parole = mysqli_real_escape_string($Datu_Baze, $_POST['Parole']);
 
-    if(empty($Lietotajvards)){ $Kludas[]="Ievadiet Lietotājvārdu"; }
+    if(empty($E_Pasts)){ $Kludas[]="Ievadiet E-pastu"; }
     if(empty($Parole)){ $Kludas[]="Ievadiet Paroli"; }
 
     if(count($Kludas) == 0){
-        $Pieprasijums = "SELECT * FROM konts WHERE Lietotajvards='$Lietotajvards'";
+        $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts='$E_Pasts'";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         if(mysqli_num_rows($Rezultats) > 0){
             $Konts = mysqli_fetch_array($Rezultats);
             if(password_verify($Parole, $Konts["Parole"])){
-                $_SESSION['Lietotajvards'] = $Lietotajvards;
-                $_SESSION['success'] = "You are now logged in";
-                header('location: konts.php');
+                $_SESSION['E_Pasts'] = $E_Pasts;
+                header('location: konts.php?Saturs=1');
             }else{
-                $Kludas[]="Nepareizs lietotājvārds vai parole";
+                $Kludas[]="Nepareizs E-pasts vai parole";
             }
         }else{
-            $Kludas[]="Nepareizs lietotājvārds vai parole";
+            $Kludas[]="Nepareizs E-pasts vai parole";
         }
     }
 }

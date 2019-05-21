@@ -11,11 +11,11 @@
 
 <body>
     <?php include('nav.php'); ?>
-    <div id="Atstarpe"></div>
+    <div class="Atstarpe"></div>
     <div class="Saturs">
         <div class="Vidus_Mazais">
             
-            <?php if(isset($_SESSION['Lietotajvards'])){
+            <?php if(isset($_SESSION['E_Pasts'])){
             echo "<h3 class='Atstarpe_Auksa'>Esat jau pieslēgušies kontam, ja vēlaties iziet no konta spiediet <a href='atslegties.php'>Atslēgties</a></h3>";
             
             
@@ -27,7 +27,8 @@
             }
             } ?>
             <form method="post" action="registracija.php">
-                <input value="<?php echo $Lietotajvards ?>" type="text" name="Lietotajvards" class="Ievade_Ievads" placeholder="Lietotājvārds" autofocus>
+                <input value="<?php echo $Vards ?>" type="text" name="Vards" class="Ievade_Ievads" placeholder="Vārds" autofocus>
+                <input value="<?php echo $Uzvards ?>" type="text" name="Uzvards" class="Ievade_Ievads" placeholder="Uzvārds">
                 <input value="<?php echo $E_Pasts ?>" type="email" name="E_Pasts" class="Ievade_Ievads" placeholder="E-pasta addrese">
                 <input type="password" name="Parole_1" class="Ievade_Ievads" placeholder="Parole">
                 <input type="password" name="Parole_2" class="Ievade_Ievads" placeholder="Atkārtota Parole">

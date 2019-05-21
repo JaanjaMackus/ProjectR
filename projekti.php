@@ -19,7 +19,7 @@ session_start();
 
 <body>
     <?php include('nav.php'); ?>
-    <div id="Atstarpe"></div>
+    <div class="Atstarpe"></div>
     <div class="Saturs Saturs_Smalks">
         <div class="Smalks_Pilns">
             <h1>Projekta nosaukums (piemērs kā izskatīsies kad uzspiests uz konkrēta projekta) todo: izveidot vispārīgu skatu kur visus vai vairākus publiskos projektus redzēt</h1>

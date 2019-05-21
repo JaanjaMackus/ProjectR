@@ -6,9 +6,9 @@
             <a href="index.php"><li>Sākums</li></a>
             <a href="projekti.php"><li>Projekti</li></a>
             <?php
-                if(isset($_SESSION['Lietotajvards'])){
+                if(isset($_SESSION['E_Pasts'])){
                     echo "
-                    <a href='konts.php'><li>Konts</li></a>
+                    <a href='konts.php?Saturs=1'><li>Konts</li></a>
                     <a href='atslegties.php'><li>Atslēgties</li></a>";
                 }else{
                     echo "
