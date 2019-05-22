@@ -7,7 +7,7 @@ $Kludas = array();
 
 // datubāzes konekcija
 include('db.php');
-
+$Datu_Baze = mysqli_connect('localhost', 'feelandb_User', 'LabaParole128', 'feelandb_ProData');
 // Lietotāja reģistrācija
 if (isset($_POST['Registret_Lietotaju'])) {
     // paņem visus datus no lietotāja izmanto mysqli_real_escape_string(), lai pasargātu no sql injection
