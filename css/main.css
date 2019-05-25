@@ -210,7 +210,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content:center;
-    width: 135%;
+    width: 125%;
     height: 100%;
     grid-column: 1/3;
     background: #062836;
@@ -221,7 +221,12 @@ body {
     padding: 2vw 4vw;
     float: left;
 }
-
+.Saturs .Konts_Nav ul .Lietotajs p{
+    line-height: 4vw;
+    font-size: 3vw;
+    text-align: center;
+    color: #fff;
+}
 .Konta_teksts h3{
     margin-bottom: 1vw;
 }
@@ -377,7 +382,7 @@ h3{
 .Saturs .Konts_Nav{
     text-align: right;
     height: 100%;
-    grid-row: 1 / span all;
+    grid-row: 1 / 2;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
@@ -389,6 +394,10 @@ h3{
     margin: 0;
     font-size: 1.6vw;
     padding: 0;
+}
+.Saturs .Konts_Nav ul .Lietotajs p{
+    line-height: 4vw;
+    font-size: 1.6vw;
 }
 .Konta_teksts p{
     line-height: 1.8vw;
@@ -472,7 +481,7 @@ h3{
 .Saturs .Konts_Nav{
     padding: 0;
 }
-.Konts_Nav a{
+.Konts_Nav a, .Saturs .Konts_Nav ul .Lietotajs p{
     line-height: 3vw;
     font-size: 1.2vw;
 }

@@ -12,7 +12,8 @@
                     <a href='atslegties.php'><li>Atslēgties</li></a>";
                 }else{
                     echo "
-                    <a href='konts.php'><li>Pieslēgties</li></a>";
+                    <a href='konts.php'><li>Pieslēgties</li></a>
+                    <a href='registracija.php'><li>Reģistrēties</li></a>";
                 }
             ?>
         </ul>

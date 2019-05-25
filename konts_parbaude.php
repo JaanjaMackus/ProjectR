@@ -8,8 +8,8 @@ $Kludas = array();
 include('db.php');
 
 if(isset($_POST['Pieslegt_Lietotaju'])){
-    $E_Pasts = mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts']);
-    $Parole = mysqli_real_escape_string($Datu_Baze, $_POST['Parole']);
+    $E_Pasts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts'])));
+    $Parole = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Parole'])));
 
     if(empty($E_Pasts)){ $Kludas[]="Ievadiet E-pastu"; }
     if(empty($Parole)){ $Kludas[]="Ievadiet Paroli"; }

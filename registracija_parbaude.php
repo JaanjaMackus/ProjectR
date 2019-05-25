@@ -7,21 +7,31 @@ $Kludas = array();
 
 // datubāzes konekcija
 include('db.php');
-$Datu_Baze = mysqli_connect('localhost', 'feelandb_User', 'LabaParole128', 'feelandb_ProData');
 // Lietotāja reģistrācija
 if (isset($_POST['Registret_Lietotaju'])) {
-    // paņem visus datus no lietotāja izmanto mysqli_real_escape_string(), lai pasargātu no sql injection
-    $Vards = mysqli_real_escape_string($Datu_Baze, $_POST['Vards']);
-    $Uzvards = mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards']);
-    $E_Pasts = mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts']);
-    $Parole_1 = mysqli_real_escape_string($Datu_Baze, $_POST['Parole_1']);
-    $Parole_2 = mysqli_real_escape_string($Datu_Baze, $_POST['Parole_2']);
+    // paņem visus datus no lietotāja izmantjot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
+    $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
+    $Uzvards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards'])));
+    $E_Pasts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts'])));
+    $Parole_1 = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Parole_1'])));
+    $Parole_2 = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Parole_2'])));
 
     // Lietotāja datu pārbaude
     if(empty($Vards)){ $Kludas[]="nepieciešams Vārds"; }
+    if(strlen($Vards) > '20'){ $Kludas[]="vārds ir garāks par 20 simboliem"; }
     if(empty($Uzvards)){ $Kludas[]="nepieciešams Uzvārds"; }
+    if(strlen($Uzvards) > '20'){ $Kludas[]="uzvārds ir garāks par 20 simboliem"; }
     if(empty($E_Pasts)){ $Kludas[]="nepieciešams E-Pasts"; }
-    if(empty($Parole_1)){ $Kludas[]="nepieciešama Parole"; }
+    if(empty($Parole_1)){ $Kludas[]="nepieciešama Parole"; 
+        }else{
+            if(strlen($Parole_1) <= '10'){ $Kludas[]="parolei jābūt vismaz 10 simbolu garumā"; }
+            if(strlen($Parole_1) > '30'){ $Kludas[]="parole ir garāka par 30 simboliem"; 
+            }else{
+                if(!preg_match("#[0-9]+#",$Parole_1)){ $Kludas[]="nepieciešams cipars parolē"; }
+                if(!preg_match("#[A-Z]+#",$Parole_1)){ $Kludas[]="nepieciešams lielais burts parolē"; }
+                if(!preg_match("#[a-z]+#",$Parole_1)){ $Kludas[]="nepieciešams mazais burts parolē"; }
+            }
+        }
     if($Parole_1 != $Parole_2){ $Kludas[]= "Ievadītās paroles nesakrīt"; }
 
     // E-Pasta pieejamības pārbaude
@@ -39,8 +49,11 @@ if (isset($_POST['Registret_Lietotaju'])) {
         $Parole = password_hash($Parole_1, PASSWORD_DEFAULT);
         $Ievietojamais = "INSERT INTO konts (Vards, Uzvards, E_Pasts, Parole)
             VALUES('$Vards', '$Uzvards', '$E_Pasts', '$Parole')";
-        mysqli_query($Datu_Baze, $Ievietojamais);
-        $_SESSION['E_Pasts'] = $E_Pasts;
-        header('location: index.php');
+        $registracija = mysqli_query($Datu_Baze, $Ievietojamais);
+        if($registracija){
+            header('location: konts.php');
+        }else{
+            $Kludas[]="neizdevās savienoties ar serveri mēģiniet vēlāk";
+        }
     }
 }
