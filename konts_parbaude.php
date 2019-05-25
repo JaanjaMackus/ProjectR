@@ -13,7 +13,7 @@ if(isset($_POST['Pieslegt_Lietotaju'])){
 
     if(empty($E_Pasts)){ $Kludas[]="Ievadiet E-pastu"; }
     if(empty($Parole)){ $Kludas[]="Ievadiet Paroli"; }
-
+    
     if(count($Kludas) == 0){
         $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts='$E_Pasts'";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
@@ -30,5 +30,4 @@ if(isset($_POST['Pieslegt_Lietotaju'])){
         }
     }
 }
-
 ?>

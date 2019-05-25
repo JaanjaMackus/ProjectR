@@ -11,7 +11,6 @@
 
 <body>
     <?php include('nav.php');
-    
     if(isset($_SESSION['E_Pasts'])){
         echo "<div class='Atstarpe'></div><div class='Saturs Saturs_Smalks'>";
         include('konts_nav.php');
