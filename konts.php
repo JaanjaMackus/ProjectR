@@ -8,7 +8,6 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 
-
 <body>
     <?php include('nav.php');
     if(isset($_SESSION['E_Pasts'])){
