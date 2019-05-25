@@ -29,7 +29,7 @@
             <form method="post" action="registracija.php">
                 <input value="<?php echo $Vards ?>" type="text" name="Vards" class="Ievade_Ievads" placeholder="Vārds" autofocus>
                 <input value="<?php echo $Uzvards ?>" type="text" name="Uzvards" class="Ievade_Ievads" placeholder="Uzvārds">
-                <input value="<?php echo $E_Pasts ?>" type="email" name="E_Pasts" class="Ievade_Ievads" placeholder="E-pasta addrese">
+                <input value="<?php echo $E_Pasts ?>" type="email" name="E_Pasts" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$" class="Ievade_Ievads" placeholder="E-pasta addrese">
                 <input type="password" name="Parole_1" class="Ievade_Ievads" placeholder="Parole">
                 <input type="password" name="Parole_2" class="Ievade_Ievads" placeholder="Atkārtota Parole">
                 <input type="submit" name="Registret_Lietotaju" value="Izveidot kontu" class="Ievade_Poga">

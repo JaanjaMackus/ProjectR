@@ -14,10 +14,11 @@
         echo "<div class='Atstarpe'></div><div class='Saturs Saturs_Smalks'>";
         include('konts_nav.php');
         switch($_GET['Saturs']){
-        case 1: include 'Saturs_1.php'; break;
-        case 2: include 'Saturs_2.php'; break;
-        case 3: include 'Saturs_3.php'; break;
-        default: include 'Saturs_1.php';
+        case 1: include 'konts_filtri.php'; break;
+        case 2: include 'konts_projekti.php'; break;
+        case 21: include 'konts_pievienot_projektu.php'; break;
+        case 3: include 'konts_iestatijumi.php'; break;
+        default: include 'konts_filtri.php';
         
         }
         echo "</div>";
