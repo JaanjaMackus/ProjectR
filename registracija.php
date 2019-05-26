@@ -27,11 +27,35 @@
             }
             } ?>
             <form method="post" action="registracija.php">
-                <input value="<?php echo $Vards ?>" type="text" name="Vards" class="Ievade_Ievads" placeholder="Vārds" autofocus>
-                <input value="<?php echo $Uzvards ?>" type="text" name="Uzvards" class="Ievade_Ievads" placeholder="Uzvārds">
-                <input value="<?php echo $E_Pasts ?>" type="email" name="E_Pasts" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$" class="Ievade_Ievads" placeholder="E-pasta addrese">
-                <input type="password" name="Parole_1" class="Ievade_Ievads" placeholder="Parole">
-                <input type="password" name="Parole_2" class="Ievade_Ievads" placeholder="Atkārtota Parole">
+                <input value="<?php echo $Vards ?>"
+                       maxlength="20"
+                       type="text" name="Vards"
+                       title="Vārds" class="Ievade_Ievads"
+                       placeholder="Vārds" autofocus required>
+                <input value="<?php echo $Uzvards ?>"
+                       id="Uzvards"
+                       class="Ievade_Ievads"
+                       maxlength="20"
+                       type="text" name="Uzvards"
+                       pattern="[a-zA-Z-].{3,}"
+                       title="Uzvārds" class="Ievade_Ievads"
+                       placeholder="Uzvārds" required>
+                <input value="<?php echo $E_Pasts ?>"
+                       maxlength="30"
+                       type="email" name="E_Pasts"
+                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$"
+                       title="E-Pasts" class="Ievade_Ievads"
+                       placeholder="E-pasta addrese" required>
+                <input type="password" name="Parole_1"
+                       maxlength="30"
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                       title="Parole" class="Ievade_Ievads"
+                       placeholder="Parole" required>
+                <input type="password" name="Parole_2"
+                       maxlength="30"
+                       title="Atkārtotā parole"
+                       class="Ievade_Ievads"
+                       placeholder="Atkārtota Parole" required>
                 <input type="submit" name="Registret_Lietotaju" value="Izveidot kontu" class="Ievade_Poga">
             </form>
             <span class="Atstarpe_Auksa"></span>
@@ -41,4 +65,10 @@
     </div>
 </body>
     
+<script>
+    var input = document.getElementById('Vards');
+    input.oninvalid = function(event) {
+    event.target.setCustomValidity('Uzvārdam vajag 1 lielo burtu');
+}
+</script>
 </html>
