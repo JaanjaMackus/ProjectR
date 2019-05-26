@@ -17,6 +17,7 @@
         case 1: include 'konts_filtri.php'; break;
         case 2: include 'konts_projekti.php'; break;
         case 21: include 'konts_pievienot_projektu.php'; break;
+        case 22: include 'konts_labot_projektu.php'; break;
         case 3: include 'konts_iestatijumi.php'; break;
         default: include 'konts_filtri.php';
         

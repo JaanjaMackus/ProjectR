@@ -25,7 +25,7 @@ if (isset($_POST['Registret_Lietotaju'])) {
     if(strlen($E_Pasts) > '20'){ $Kludas[]="E-Pasts ir garāks par 30 simboliem"; }
     if(empty($Parole_1)){ $Kludas[]="nepieciešama Parole"; 
         }else{
-            if(strlen($Parole_1) <= '10'){ $Kludas[]="parolei jābūt vismaz 10 simbolu garumā"; }
+            if(strlen($Parole_1) < '10'){ $Kludas[]="parolei jābūt vismaz 10 simbolu garumā"; }
             if(strlen($Parole_1) > '30'){ $Kludas[]="parole ir garāka par 30 simboliem"; 
             }else{
                 if(!preg_match("#[0-9]+#",$Parole_1)){ $Kludas[]="nepieciešams cipars parolē"; }
@@ -52,9 +52,10 @@ if (isset($_POST['Registret_Lietotaju'])) {
             VALUES('$Vards', '$Uzvards', '$E_Pasts', '$Parole')";
         $registracija = mysqli_query($Datu_Baze, $Ievietojamais);
         if($registracija){
-            header('location: konts.php');
+            $_SESSION['E_Pasts'] = $E_Pasts;
+            header('location: konts.php?Saturs=1');
         }else{
-            $Kludas[]="neizdevās savienoties ar serveri mēģiniet vēlāk";
+            $Kludas[]="radās kļūda, mēģiniet vēlāk";
         }
     }
 }

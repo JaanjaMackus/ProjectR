@@ -9,12 +9,12 @@
     } ?>
     <form method="post">
         <h2>Nosaukums</h2>
-        <input value="<?php echo $Nosaukums ?>" type="text" name="Nosaukums" class="Ievade_Ievads" placeholder="Nosaukums" autofocus>
+        <input value="<?php echo $Nosaukums ?>" type="text" name="Nosaukums" class="Ievade_Ievads" placeholder="Nosaukums" autofocus required>
         <h2>Īss apraksts</h2>
-        <textarea value="<?php echo $Apraksts_Iss ?>" type="text" name="Apraksts_Iss" class="Ievade_Gars Ievade_Ievads" placeholder="Īss apraksts līdz 500 simboliem"></textarea>
+        <textarea value="<?php echo $Apraksts_Iss ?>" type="text" name="Apraksts_Iss" class="Ievade_Gars Ievade_Ievads" placeholder="Īss apraksts līdz 500 simboliem" required></textarea>
         <h2>Pilns apraksts</h2>
-        <textarea value="<?php echo $Apraksts ?>" type="textarea" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Pilns apraksts"></textarea>
-        <input type="submit" name="Registret_Lietotaju" value="Izveidot projektu un turpināt" class="Ievade_Poga">
+        <textarea value="<?php echo $Apraksts ?>" type="textarea" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Pilns apraksts" required></textarea>
+        <input type="submit" name="izveidot_projektu" value="Izveidot projektu un turpināt" class="Ievade_Poga">
     </form>
     <span class="Atstarpe_Auksa"></span>
 </div>

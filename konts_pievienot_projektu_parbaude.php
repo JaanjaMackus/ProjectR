@@ -8,52 +8,54 @@ $Kludas = array();
 // datubāzes konekcija
 include('db.php');
 // Lietotāja reģistrācija
-if (isset($_POST['Registret_Lietotaju'])) {
+if (isset($_POST['izveidot_projektu'])) {
     // paņem visus datus no lietotāja izmantjot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
-    $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
-    $Uzvards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards'])));
-    $E_Pasts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts'])));
-    $Parole_1 = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Parole_1'])));
-    $Parole_2 = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Parole_2'])));
+    $Nosaukums = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Nosaukums'])));
+    $Apraksts_Iss = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts_Iss'])));
+    $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
 
     // Lietotāja datu pārbaude
-    if(empty($Vards)){ $Kludas[]="nepieciešams Vārds"; }
-    if(strlen($Vards) > '20'){ $Kludas[]="vārds ir garāks par 20 simboliem"; }
-    if(empty($Uzvards)){ $Kludas[]="nepieciešams Uzvārds"; }
-    if(strlen($Uzvards) > '20'){ $Kludas[]="uzvārds ir garāks par 20 simboliem"; }
-    if(empty($E_Pasts)){ $Kludas[]="nepieciešams E-Pasts"; }
-    if(empty($Parole_1)){ $Kludas[]="nepieciešama Parole"; 
-        }else{
-            if(strlen($Parole_1) <= '10'){ $Kludas[]="parolei jābūt vismaz 10 simbolu garumā"; }
-            if(strlen($Parole_1) > '30'){ $Kludas[]="parole ir garāka par 30 simboliem"; 
-            }else{
-                if(!preg_match("#[0-9]+#",$Parole_1)){ $Kludas[]="nepieciešams cipars parolē"; }
-                if(!preg_match("#[A-Z]+#",$Parole_1)){ $Kludas[]="nepieciešams lielais burts parolē"; }
-                if(!preg_match("#[a-z]+#",$Parole_1)){ $Kludas[]="nepieciešams mazais burts parolē"; }
-            }
-        }
-    if($Parole_1 != $Parole_2){ $Kludas[]= "Ievadītās paroles nesakrīt"; }
+    if(empty($Nosaukums)){ $Kludas[]="nepieciešams Vārds"; }
+    if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Uzvārds"; }
+    if(empty($Apraksts)){ $Kludas[]="nepieciešams E-Pasts"; }
 
-    // E-Pasta pieejamības pārbaude
-    $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts='$E_Pasts'";
+    // vārda pieejamības pārbaude
+    $Pieprasijums = "SELECT * FROM projekts WHERE Nosaukums='$Nosaukums'";
     $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
-    $Lietotajs = mysqli_fetch_assoc($Rezultats);
-    if($Lietotajs){
-        if ($Lietotajs['E_Pasts'] === $E_Pasts){
-            $Kludas[]="Lietotājs ar šādu E-Pasts jau ir reģistrēts";
+    $projekts = mysqli_fetch_assoc($Rezultats);
+    if($projekts){
+        if ($projekts['Nosaukums'] === $Nosaukums){
+            $Kludas[]="Projekts ar šādu nosaukumu jau eksistē";
         }
     }
 
     // ja nav kļūdu tad reģistrē lietotāju
     if (count($Kludas) == 0) {
-        $Parole = password_hash($Parole_1, PASSWORD_DEFAULT);
-        $Ievietojamais = "INSERT INTO konts (Vards, Uzvards, E_Pasts, Parole)
-            VALUES('$Vards', '$Uzvards', '$E_Pasts', '$Parole')";
-        $registracija = mysqli_query($Datu_Baze, $Ievietojamais);
-        if($registracija){
-            header('location: konts.php');
+        $E_Pasts = $_SESSION['E_Pasts'];
+        $Pieprasijums = "SELECT ID_Konts FROM konts WHERE E_Pasts='$E_Pasts'";
+        $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+        $Lietotajs = mysqli_fetch_assoc($Rezultats);
+        if($Lietotajs){
+            $Lietotajs = $Lietotajs['ID_Konts'];
+            $Ievietojamais = "INSERT INTO projekts (Nosaukums, Apraksts_Iss, Apraksts, ID_Konts)
+                VALUES('$Nosaukums', '$Apraksts_Iss', '$Apraksts', '$Lietotajs')";
+            $izveidosana = mysqli_query($Datu_Baze, $Ievietojamais);
+            if($izveidosana){
+                $Pieprasijums = "SELECT ID_Projekts FROM projekts WHERE ID_Konts='$Lietotajs'";
+                $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+                $ID_Projekts = mysqli_fetch_assoc($Rezultats);
+                if($ID_Projekts){
+                    $ID_Projekts = $ID_Projekts['ID_Projekts'];
+                    $_SESSION['ID_Projekts'] = $ID_Projekts;
+                    header('location: konts.php?Saturs=22');
+                }else{
+                    $Kludas[]="radās kļūda, nevar atrast izveidoto projektu";
+                }
+            }else{
+                $Kludas[]="radās kļūda, mēģiniet vēlāk";
+            }          
         }else{
-            $Kludas[]="neizdevās savienoties ar serveri mēģiniet vēlāk";
+            $Kludas[]="neizdevās iegūt lietotāja ID, mēģiniet iziet un ieiet savā kontā";
         }
     }
 }

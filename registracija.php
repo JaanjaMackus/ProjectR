@@ -28,27 +28,34 @@
             } ?>
             <form method="post" action="registracija.php">
                 <input value="<?php echo $Vards ?>"
-                       maxlength="20"
-                       type="text" name="Vards"
+                       maxlength="20" 
+                       type="text" name="Vards" id="Vards"
+                       pattern="(?=.*[a-z])(?=.*[A-Z]).{2,}"
+                       oninvalid="setCustomValidity('Vārdam vajag 1 lielo un mazo burtu')" 
+                       oninput="setCustomValidity('')"
                        title="Vārds" class="Ievade_Ievads"
                        placeholder="Vārds" autofocus required>
                 <input value="<?php echo $Uzvards ?>"
-                       id="Uzvards"
-                       class="Ievade_Ievads"
                        maxlength="20"
-                       type="text" name="Uzvards"
-                       pattern="[a-zA-Z-].{3,}"
+                       type="text" name="Uzvards" id="Uzvards"
+                       pattern="(?=.*[a-z])(?=.*[A-Z]).{2,}"
+                       oninvalid="setCustomValidity('Uzvārdam vajag 1 lielo un mazo burtu')" 
+                       oninput="setCustomValidity('')"
                        title="Uzvārds" class="Ievade_Ievads"
                        placeholder="Uzvārds" required>
                 <input value="<?php echo $E_Pasts ?>"
                        maxlength="30"
-                       type="email" name="E_Pasts"
+                       type="email" name="E_Pasts" id="E_Pasts"
                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$"
+                       oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 
+                       oninput="setCustomValidity('')"
                        title="E-Pasts" class="Ievade_Ievads"
                        placeholder="E-pasta addrese" required>
-                <input type="password" name="Parole_1"
+                <input type="password" name="Parole_1" id="Parole_1"
                        maxlength="30"
-                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
+                       oninvalid="setCustomValidity('Vismaz 10 simbolu parolei nepieciešams 1 cipars, 1 lielais un 1 mazais burts')" 
+                       oninput="setCustomValidity('')"
                        title="Parole" class="Ievade_Ievads"
                        placeholder="Parole" required>
                 <input type="password" name="Parole_2"
@@ -64,11 +71,5 @@
         </div>
     </div>
 </body>
-    
-<script>
-    var input = document.getElementById('Vards');
-    input.oninvalid = function(event) {
-    event.target.setCustomValidity('Uzvārdam vajag 1 lielo burtu');
-}
-</script>
+
 </html>
