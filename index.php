@@ -7,6 +7,7 @@
 //tumsais 062836
 
 session_start();
+$_SESSION['Sadala']='Sakums';
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['Sadala']='Konts';
 $E_Pasts = "";
 $Parole    = "";
 $Kludas = array(); 

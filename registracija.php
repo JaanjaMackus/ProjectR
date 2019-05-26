@@ -1,4 +1,5 @@
-<?php include('registracija_parbaude.php') ?>
+<?php include('registracija_parbaude.php');
+$_SESSION['Sadala']='Registreties'; ?>
 
 <!DOCTYPE html>
 <html>

@@ -9,21 +9,28 @@
 </head>
 
 <body>
-    <?php include('nav.php');
+    <?php 
     if(isset($_SESSION['E_Pasts'])){
+        $_SESSION['Sadala']='Konts';
+        include('nav.php');
+        
         echo "<div class='Atstarpe'></div><div class='Saturs Saturs_Smalks'>";
-        include('konts_nav.php');
         switch($_GET['Saturs']){
-        case 1: include 'konts_filtri.php'; break;
-        case 2: include 'konts_projekti.php'; break;
-        case 21: include 'konts_pievienot_projektu.php'; break;
-        case 22: include 'konts_labot_projektu.php'; break;
-        case 3: include 'konts_iestatijumi.php'; break;
-        default: include 'konts_filtri.php';
+        case 1: $Konts_Izvelets=1; include 'konts_filtri.php'; break;
+        case 2: $Konts_Izvelets=2; include 'konts_projekti.php'; break;
+        case 21: $Konts_Izvelets=2; include 'konts_pievienot_projektu.php'; break;
+        case 22: $Konts_Izvelets=2; include 'konts_labot_projektu.php'; break;
+        case 3: $Konts_Izvelets=3; include 'konts_iestatijumi.php'; break;
+        case 4: $Konts_Izvelets=4; include 'konts_admin_lietotaji.php'; break;
+        case 5: $Konts_Izvelets=5; include 'konts_admin_publicesanai.php'; break;
+        default: $Konts_Izvelets=1; include 'konts_filtri.php';
         
         }
+        include('konts_nav.php');
         echo "</div>";
     }else{
+        $_SESSION['Sadala']='Pieslegties';
+        include('nav.php');
         include('konts_pieslegties.php');
     } ?>        
         
