@@ -1,4 +1,4 @@
-<?php include('konts_parbaude.php'); ?>
+<?php include('konts_pieslegties_parbaude.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
         }
         echo "</div>";
     }else{
-        include('pieslegties.php');
+        include('konts_pieslegties.php');
     } ?>        
         
 </body>
