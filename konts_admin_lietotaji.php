@@ -1,5 +1,5 @@
 <?php include('konts_admin_lietotaji_parbaude.php'); ?>
-
+<div class="Smalks_PilnsSaturs_1_5">
 <!--   pilna loga divs  -->
 <div class="Smalks_Pilns_1_5"><h3>pilns loga garums visa garuma ja vajag</h3></div>
 
@@ -45,7 +45,7 @@
 
 
 ?>
-
+</div>
 </div>
 
 

@@ -28,6 +28,7 @@ $_SESSION['Sadala']='Registreties'; ?>
             }
             } ?>
             <form method="post" action="registracija.php">
+                <h2>Vārds</h2>
                 <input value="<?php echo $Vards ?>"
                        maxlength="20" 
                        type="text" name="Vards" id="Vards"
@@ -36,6 +37,7 @@ $_SESSION['Sadala']='Registreties'; ?>
                        oninput="setCustomValidity('')"
                        title="Vārds" class="Ievade_Ievads"
                        placeholder="Vārds" autofocus required>
+                <h2>Uzvārds</h2>
                 <input value="<?php echo $Uzvards ?>"
                        maxlength="20"
                        type="text" name="Uzvards" id="Uzvards"
@@ -44,6 +46,7 @@ $_SESSION['Sadala']='Registreties'; ?>
                        oninput="setCustomValidity('')"
                        title="Uzvārds" class="Ievade_Ievads"
                        placeholder="Uzvārds" required>
+                <h2>E-pasts</h2>
                 <input value="<?php echo $E_Pasts ?>"
                        maxlength="30"
                        type="email" name="E_Pasts" id="E_Pasts"
@@ -52,6 +55,7 @@ $_SESSION['Sadala']='Registreties'; ?>
                        oninput="setCustomValidity('')"
                        title="E-Pasts" class="Ievade_Ievads"
                        placeholder="E-pasta addrese" required>
+                <h2>Parole</h2>
                 <input type="password" name="Parole_1" id="Parole_1"
                        maxlength="30"
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
@@ -59,6 +63,7 @@ $_SESSION['Sadala']='Registreties'; ?>
                        oninput="setCustomValidity('')"
                        title="Parole" class="Ievade_Ievads"
                        placeholder="Parole" required>
+                <h2>Atkārtotā parole</h2>
                 <input type="password" name="Parole_2"
                        maxlength="30"
                        title="Atkārtotā parole"

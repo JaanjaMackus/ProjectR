@@ -9,7 +9,9 @@
         }
         } ?>
         <form method='post' action='konts.php'>
+            <h2>E-pasts</h2>
             <input value='<?php echo $E_Pasts ?>' type='text' name='E_Pasts' class='Ievade_Ievads' placeholder='E-pasts' autofocus>
+            <h2>Parole</h2>
             <input type='password' name='Parole' class='Ievade_Ievads' placeholder='Parole'>
             <input type='submit' name='Pieslegt_Lietotaju' value='Pieslēgties' class='Ievade_Poga'>
         </form>

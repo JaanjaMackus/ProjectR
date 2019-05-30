@@ -15,9 +15,9 @@ if (isset($_POST['izveidot_projektu'])) {
     $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
 
     // Lietotāja datu pārbaude
-    if(empty($Nosaukums)){ $Kludas[]="nepieciešams Vārds"; }
-    if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Uzvārds"; }
-    if(empty($Apraksts)){ $Kludas[]="nepieciešams E-Pasts"; }
+    if(empty($Nosaukums)){ $Kludas[]="nepieciešams Nosaukums"; }
+    if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Īss apraksts"; }
+    if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }
 
     // vārda pieejamības pārbaude
     $Pieprasijums = "SELECT * FROM projekts WHERE Nosaukums='$Nosaukums'";
