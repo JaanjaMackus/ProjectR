@@ -1,13 +1,10 @@
 <?php
-//balts// F8F8F8
-//peleks/ 767F88
-
-//peleks/ aabbcc
-//sarkans DD0000
-//tumsais 062836
 
 session_start();
 $_SESSION['Sadala']='Projekti';
+
+// datubāzes konekcija
+include('db.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +19,28 @@ $_SESSION['Sadala']='Projekti';
     <?php include('nav.php'); ?>
     <div class="Atstarpe"></div>
     <div class="Saturs Saturs_Smalks">
+      
+    <?php
+    $Pieprasijums = "SELECT * FROM projekts WHERE VaiPublisks=1";
+    $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+    while($projekts = mysqli_fetch_assoc($Rezultats)){
+
+            echo "
+            <div class='Projekts Konta_teksts Projekts_Izstiepts'>
+                <h3>" . $projekts['Nosaukums'] . "</h3>
+                <p>".$projekts['Apraksts_Iss']."
+                <br><br><a class='konts_poga' href='#'>Apskatīt projektu</a></p>
+            </div>";
+    }
+    ?>
+        
+
+        
+
+        
+        
         <div class="Smalks_Pilns">
-            <h1>Projekta nosaukums (piemērs kā izskatīsies kad uzspiests uz konkrēta projekta)</h1>
+            <h1>Projekta nosaukums (piemērs kā izskatīsies kad uzspiests uz konkrēta projekta)stāv te vēl lai nepazustu kautkur ;D</h1>
             <p class="apraksts">projekta apraksts Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
         </div>
         <div><h3>Vards Uzvards</h3><p class="apraksts">stradaja pie sensoriem, kur jūtas ļoti labi, jo sensori viņu saprot</p>

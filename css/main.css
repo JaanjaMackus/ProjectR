@@ -148,8 +148,8 @@ body {
     margin-top: 2vw;
 }
 .Ievade_Paradit_Poga p{
-    font-size: 1.7vw;
-    padding: 1vw 0;
+    font-size: 3vw;
+    padding: 2vw 0;
     color:#DD0000;
 }
 .Ievade_Paradit_Poga p:hover{
@@ -404,10 +404,15 @@ h2{
     background: #888080;
     height: 40vw;
 }
-    
-    
-    
-    
+.Projekts_Izstiepts:nth-child(odd){
+    margin-left: 5vw;
+    width: calc(100% + 5vw);
+}
+.Projekts_Izstiepts:nth-child(even){
+    grid-column: 4/6;
+    margin-right: 5vw;
+    width: calc(100% + 5vw);
+}  
     
     
     
@@ -481,7 +486,10 @@ h2{
     font-size: 1.8vw;
     opacity: 1;
 }
-
+.Ievade_Paradit_Poga p{
+    font-size: 1.6vw;
+    padding: 1vw 0;
+}
 /* /////////////////////////////////////////////////////////////////// Konts /// */
 .Saturs .Konts_Nav{
     text-align: right;
