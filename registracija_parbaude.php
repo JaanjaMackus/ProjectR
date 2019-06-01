@@ -36,12 +36,12 @@ if (isset($_POST['Registret_Lietotaju'])) {
     if($Parole_1 != $Parole_2){ $Kludas[]= "Ievadītās paroles nesakrīt"; }
 
     // E-Pasta pieejamības pārbaude
-    $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts='$E_Pasts'";
+    $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
     $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
     $Lietotajs = mysqli_fetch_assoc($Rezultats);
     if($Lietotajs){
         if ($Lietotajs['E_Pasts'] === $E_Pasts){
-            $Kludas[]="Lietotājs ar šādu E-Pasts jau ir reģistrēts";
+            $Kludas[]="Lietotājs ar šādu E-Pastu jau ir reģistrēts";
         }
     }
 

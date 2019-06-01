@@ -59,16 +59,18 @@ $_SESSION['Sadala']='Registreties'; ?>
                 <input type="password" name="Parole_1" id="Parole_1"
                        maxlength="30"
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
-                       oninvalid="setCustomValidity('Vismaz 10 simbolu parolei nepieciešams 1 cipars, 1 lielais un 1 mazais burts')" 
+                       oninvalid="setCustomValidity('Parolei jābūt vismaz 10 simbolu garai ar 1 ciparu, 1 lielo un 1 mazo burtu')" 
                        oninput="setCustomValidity('')"
                        title="Parole" class="Ievade_Ievads"
                        placeholder="Parole" required>
                 <h2>Atkārtotā parole</h2>
-                <input type="password" name="Parole_2"
+                <input type="password" name="Parole_2" id="Parole_2"
                        maxlength="30"
-                       title="Atkārtotā parole"
-                       class="Ievade_Ievads"
-                       placeholder="Atkārtota Parole" required>
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
+                       oninvalid="setCustomValidity('Parolei jābūt vismaz 10 simbolu garai ar 1 ciparu, 1 lielo un 1 mazo burtu')" 
+                       oninput="setCustomValidity('')"
+                       title="Atkārtotā parole" class="Ievade_Ievads"
+                       placeholder="Atkārtotā parole" required>
                 <input type="submit" name="Registret_Lietotaju" value="Izveidot kontu" class="Ievade_Poga">
             </form>
             <span class="Atstarpe_Auksa"></span>

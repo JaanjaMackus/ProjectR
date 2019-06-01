@@ -16,7 +16,7 @@ if(isset($_POST['Pieslegt_Lietotaju'])){
     if(empty($Parole)){ $Kludas[]="Ievadiet Paroli"; }
     
     if(count($Kludas) == 0){
-        $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts='$E_Pasts'";
+        $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         if(mysqli_num_rows($Rezultats) > 0){
             $Konts = mysqli_fetch_array($Rezultats);
