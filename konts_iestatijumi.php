@@ -35,11 +35,11 @@
                oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 
                oninput="setCustomValidity('')"
                title="E-Pasts" class="Ievade_Ievads"
-               placeholder="E-pasta addrese" required>
-        <input type="checkbox" id="Nav_Poga" class="Nav_Poga">
-        <label for="Nav_Poga">
-        <span></span>
-        </label>
+               placeholder="E-pasta addrese" required>   
+        
+        <label class="Ievade_Paradit_Poga">
+        <input class="Paradit_Poga" type="checkbox" value="1"><span class="Ievade_Paslepts"><p>Labot paroli</p>
+        <h2 class="Ievade_Paslepts">Parole</h2>
         <input type="password" name="Parole_1" id="Parole_1"
                maxlength="30"
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"
@@ -47,11 +47,14 @@
                oninput="setCustomValidity('')"
                title="Parole" class="Ievade_Ievads Ievade_Paslepts"
                placeholder="Parole">
+        <h2 class="Ievade_Paslepts">Atkārtotā parole</h2>
         <input type="password" name="Parole_2"
                maxlength="30"
                title="Atkārtotā parole"
                class="Ievade_Ievads Ievade_Paslepts"
                placeholder="Atkārtota Parole">
+            </span>
+            </label>
         <input type="submit" name="Saglabat_Izmainas" value="Saglabāt izmaiņas" class="Ievade_Poga">
     </form>
 

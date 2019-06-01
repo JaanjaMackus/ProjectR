@@ -142,6 +142,28 @@ body {
 .Nav_Poga {
   display: none;
 }
+.Ievade_Paradit_Poga{
+    width: 100%;
+    display: block;
+    margin-top: 2vw;
+}
+.Ievade_Paradit_Poga p{
+    font-size: 1.7vw;
+    padding: 1vw 0;
+    color:#DD0000;
+}
+.Ievade_Paradit_Poga p:hover{
+    cursor: pointer;
+}
+.Ievade_Paradit_Poga input, .Ievade_Paslepts{
+    display: none;
+}
+.Ievade_Paradit_Poga span {
+    display:block;
+}
+.Ievade_Paradit_Poga .Paradit_Poga:checked + span .Ievade_Paslepts{
+    display: block;
+}
 .Logo{
     color: #F8F8F8;
     font-size: 3.3vw;
@@ -302,14 +324,13 @@ body {
 .Konts_lietotaji:nth-child(odd) a{
     padding: 0 1.5vw;
 }
-.Ievade_Paslepts{
-    display: none !important;
+/*.Ievade_Paradit_Poga .Ievade_Paslepts{
+    display: none;
 }
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */
 .Ievade_Ievads{
     font-size: 3vw;
     padding-left: 2vw;
-    display: block;
     width: calc(100% - 2vw);
     height: 5vw;
     margin-top: 3vw;
