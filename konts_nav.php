@@ -3,6 +3,7 @@
         <ul>
             <li class="Lietotajs"><p><?php 
                 $E_Pasts = $_SESSION['E_Pasts'];
+                mysqli_set_charset($Datu_Baze,"utf8");
                 $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
                 $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
                 $Lietotajs = mysqli_fetch_assoc($Rezultats);

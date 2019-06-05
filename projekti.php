@@ -21,45 +21,74 @@ include('db.php');
     <div class="Atstarpe"></div>
     <form class="Saturs Saturs_Smalks" method="post">
     <?php
-    
-    if (isset($_POST['Apskatit'])) {
-        $ID_Projekts = $_POST['Apskatit'];
+        
+    if(isset($_POST['Publicesana'])){
+        $ID_Projekts = $_POST['ID_Projekts'];
+        if($_POST['Publicesana']=='Noraidit'){
+        // Noraida projekta publicesanu
+            $Pieprasijums = "UPDATE projekts SET VaiPublisks=0 WHERE ID_Projekts='$ID_Projekts'";
+            $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+            if(mysqli_affected_rows($Datu_Baze) > 0){
+                header('Location: konts.php?Saturs=5');
+            }else{
+                echo "Neizdevās noraidīt projektu";
+            }
+        }else{
+        // Apstiprina projekta publicesanu
+            $Pieprasijums = "UPDATE projekts SET VaiPublisks=1 WHERE ID_Projekts='$ID_Projekts'";
+            $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+            if(mysqli_affected_rows($Datu_Baze) > 0){
+                header('Location: konts.php?Saturs=5');
+            }else{
+                echo "Neizdevās apstiprināt projektu";
+            }
+        }
+        
+    }else if(isset($_POST['Apskatit']) || isset($_GET['Apskatit'])) {
+        if(isset($_POST['Apskatit'])){
+            $ID_Projekts = $_POST['Apskatit'];
+        }else{
+            $ID_Projekts = $_GET['Apskatit'];
+        }
         mysqli_set_charset($Datu_Baze,"utf8");
         // Projekta datu iegūšana
         $Pieprasijums = "SELECT * FROM projekts WHERE ID_Projekts='$ID_Projekts'";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         $Projekts = mysqli_fetch_assoc($Rezultats);
         if($Projekts){
-        ?>
-        <div class="Smalks_Pilns">
-            <h1><?php echo $Projekts['Nosaukums']; ?></h1>
-            <p class="apraksts"><?php echo $Projekts['Apraksts']; ?></p>
-        </div>
-            
-        <?php 
-        // Projekta datu iegūšana
-        $Pieprasijums = "SELECT * FROM dalibnieks WHERE ID_Projekts='$ID_Projekts'";
-        $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
-        if($Rezultats){
-            while($Dalibnieks = mysqli_fetch_assoc($Rezultats)){
-                echo "
-                    <div><h3>".$Dalibnieks['Vards'] ." ". $Dalibnieks['Uzvards']."</h3><p class='apraksts'>".$Dalibnieks['Apraksts']."</p>
-                    </div>";
-            }
+            if($Projekts['VaiPublisks']==1){
+////////////ja ir publisks projekts
+                include('projekti_paradit.php');
+        }else{
+/////////ja nav publisks projekts
+            $E_Pasts = $_SESSION['E_Pasts'];
+            mysqli_set_charset($Datu_Baze,"utf8");
+            $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
+            $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+            $Lietotajs = mysqli_fetch_assoc($Rezultats);
+            if($Lietotajs){
+                
+                if($Lietotajs['Tiesibas'] == 1){
+                    echo "Admins te";
+                    include('projekti_paradit.php');
+                    ?>
+                    <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
+                    <button class='konts_poga' type='submit' name='Publicesana' value='Noraidit'>Noraidīt</button>
+                    <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button>
+                    <?php
+                }else if($Lietotajs['ID_Konts'] == $Projekts['ID_Konts']){
+                    echo "Lietotajam pieder projekts";
+                    include('projekti_paradit.php');
+                }else{
+                    echo "<h3>Jums nav atļauta piekļuve šim projektam</h3>";
+                }
+            }   
+
+
+
+
+
         }
-            
-            
-            
-        ?>
-        <div class="Smalks_Pilns Vizualizesanai">
-            <h1>Vieta kur būs datu filtrēšana un attēlošana</h1>
-            
-        </div>
-        
-        
-        
-        
-    <?php
     }else{
         echo "Neizdevās atrast izvēlēto projektu, mēģiniet vēlreiz";
     }
