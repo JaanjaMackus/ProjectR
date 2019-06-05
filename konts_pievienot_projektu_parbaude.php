@@ -36,6 +36,7 @@ if (isset($_POST['izveidot_projektu'])) {
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         $Lietotajs = mysqli_fetch_assoc($Rezultats);
         if($Lietotajs){
+            mysqli_set_charset($Datu_Baze,"utf8");
             $Lietotajs = $Lietotajs['ID_Konts'];
             $Ievietojamais = "INSERT INTO projekts (Nosaukums, Apraksts_Iss, Apraksts, ID_Konts)
                 VALUES('$Nosaukums', '$Apraksts_Iss', '$Apraksts', '$Lietotajs')";

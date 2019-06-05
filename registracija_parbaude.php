@@ -47,6 +47,7 @@ if (isset($_POST['Registret_Lietotaju'])) {
 
     // ja nav kļūdu tad reģistrē lietotāju
     if (count($Kludas) == 0) {
+        mysqli_set_charset($Datu_Baze,"utf8");
         $Parole = password_hash($Parole_1, PASSWORD_DEFAULT);
         $Ievietojamais = "INSERT INTO konts (Vards, Uzvards, E_Pasts, Parole)
             VALUES('$Vards', '$Uzvards', '$E_Pasts', '$Parole')";

@@ -6,10 +6,12 @@
     <title>Datu Vizualizēšana</title>
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
     <?php 
+    mysqli_set_charset($Datu_Baze,"utf8");
     if(isset($_SESSION['E_Pasts'])){
         $_SESSION['Sadala']='Konts';
         include('nav.php');
