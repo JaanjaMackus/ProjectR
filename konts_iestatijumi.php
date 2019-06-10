@@ -2,7 +2,7 @@
 <?php include('konts_iestatijumi_parbaude.php'); ?>
 
 <div class="Smalks_Pilns_1_5">
-    <h3 class="Atstarpe_Auksa">Labot kontu</h3>
+    <h3>Labot kontu</h3>
     <?php if(count($Kludas)>0){
     foreach ($Kludas as $Kluda){
           echo "<p class='kluda'>$Kluda</p>";

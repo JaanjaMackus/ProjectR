@@ -18,8 +18,9 @@ if(mysqli_num_rows($Rezultats) > 0){
         <div class='Projekts Konta_teksts'>
             <h3>" . $projekts['Nosaukums'] . "</h3>
             <p>".$projekts['Apraksts_Iss']."
-            <br><br><a class='konts_poga' href=''>Apskatīt projektu</a>
-            <a class='konts_poga' href=''>Labot projektu</a></p>
+            <br><br>
+            <a class='konts_poga' href='projekti.php?Apskatit=".$projekts['ID_Projekts']."'>Apskatīt projektu</a>
+            <a class='konts_poga' href='konts.php?Saturs=22&labot=".$projekts['ID_Projekts']."'>Labot projektu</a></p>
         </div>";
     }
 }

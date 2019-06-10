@@ -69,7 +69,6 @@ include('db.php');
             if($Lietotajs){
                 
                 if($Lietotajs['Tiesibas'] == 1){
-                    echo "Admins te";
                     include('projekti_paradit.php');
                     ?>
                     <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
@@ -77,7 +76,6 @@ include('db.php');
                     <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button>
                     <?php
                 }else if($Lietotajs['ID_Konts'] == $Projekts['ID_Konts']){
-                    echo "Lietotajam pieder projekts";
                     include('projekti_paradit.php');
                 }else{
                     echo "<h3>Jums nav atļauta piekļuve šim projektam</h3>";

@@ -286,10 +286,7 @@ body {
 .Pievienot_poga h3{
     color: #DD0000;
 }
-.Pievienot_forma_konts{
-    display: grid;
-    grid-column: 1/3;
-}
+
 .konts_poga{
     font-size: 3vw;
     border: 0.3vw solid #aabbcc;
@@ -300,9 +297,10 @@ body {
     color: #062836;
 }
 .dalibnieks{
+    margin-top: 3vw;
     display: grid;
     grid-gap: 2vw;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 .dalibnieks_poga{
     color: red;
@@ -324,6 +322,11 @@ body {
 }
 .Konts_lietotaji:nth-child(odd) a{
     padding: 0 1.5vw;
+}
+
+.dalibnieks .poga_blakus{
+    margin: 1vw 1vw 0 0;
+    float: left;
 }
 /*.Ievade_Paradit_Poga .Ievade_Paslepts{
     display: none;
@@ -533,8 +536,18 @@ h2{
     margin-right: 2vw;
     line-height: 4vw;
 }
-.pievienot{
-
+.dalibnieks{
+    margin-top: 2.5vw;
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.Smalks_Pilns_1_5 form .Saura_Poga{
+    width: 42%;
+    float: left;
+}
+.Smalks_Pilns_1_5 form .Saura_Poga:nth-child(even){
+    float: right;
 }
 
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */

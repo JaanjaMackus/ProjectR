@@ -17,6 +17,6 @@
         </form>
         <span class='Atstarpe_Auksa'></span>
         <p>Jauns lietotājs? <a href='registracija.php'>Reģistrējies</a></p>
-    </div> 
+    </div>
 </div>  
         
