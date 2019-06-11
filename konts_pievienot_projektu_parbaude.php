@@ -42,15 +42,19 @@ if (isset($_POST['izveidot_projektu'])) {
                 VALUES('$Nosaukums', '$Apraksts_Iss', '$Apraksts', '$Lietotajs')";
             $izveidosana = mysqli_query($Datu_Baze, $Ievietojamais);
             if($izveidosana){
-                $Pieprasijums = "SELECT ID_Projekts FROM projekts WHERE ID_Konts='$Lietotajs'";
+                $Pieprasijums = "SELECT ID_Projekts FROM projekts WHERE Nosaukums='$Nosaukums' AND ID_Konts='$Lietotajs'";
                 $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
-                $ID_Projekts = mysqli_fetch_assoc($Rezultats);
-                if($ID_Projekts){
-                    $ID_Projekts = $ID_Projekts['ID_Projekts'];
-                    header('location: konts.php?Saturs=22');
+                    if($Rezultats){
+                    $ID_Projekts = mysqli_fetch_assoc($Rezultats);
+                    if($ID_Projekts){
+                        $ID_Projekts = $ID_Projekts['ID_Projekts'];
+                        header("location: konts.php?Saturs=22&labot=".$ID_Projekts);
+                    }else{
+                        $Kludas[]="radās kļūda, nevar atrast izveidoto projektu";
+                    }
                 }else{
-                    $Kludas[]="radās kļūda, nevar atrast izveidoto projektu";
-                }
+                $Kludas[]="radās kļūda, mēģiniet vēlāk";
+                } 
             }else{
                 $Kludas[]="radās kļūda, mēģiniet vēlāk";
             }          

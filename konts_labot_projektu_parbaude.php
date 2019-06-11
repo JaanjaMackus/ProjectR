@@ -8,8 +8,8 @@ $Kludas = array();
 // datubāzes konekcija
 include('db.php');
 // Lietotāja reģistrācija
-if(isset($_POST['saglabat_projektu'])){
-    // paņem visus datus no lietotāja izmantjot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
+if(isset($_POST['Saglabat_Projektu'])){
+    // paņem visus datus no lietotāja izmantojot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
     $Nosaukums = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Nosaukums'])));
     $Apraksts_Iss = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts_Iss'])));
     $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
@@ -17,18 +17,12 @@ if(isset($_POST['saglabat_projektu'])){
     $_SESSION['Projekta_Nosaukums']=$Nosaukums;
     $_SESSION['Projekta_Apraksts_Iss']=$Apraksts_Iss;
     $_SESSION['Projekta_Apraksts']=$Apraksts;
-    $ID_Projekts = $_GET['labot'];
+    $ID_Projekts = $_SESSION['Projekta_ID'];
     
     // Lietotāja datu pārbaude
-    if(empty($Nosaukums)){ $Kludas[]="nepieciešams Nosaukums"; }else{
-        $_SESSION['Projekta_Nosaukums']=$Nosaukums;
-    }
-    if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Īss apraksts"; }else{
-        $_SESSION['Projekta_Apraksts_Iss']=$Apraksts_Iss;
-    }
-    if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }else{
-        $_SESSION['Projekta_Apraksts']=$Apraksts;
-    }
+    if(empty($Nosaukums)){ $Kludas[]="nepieciešams Nosaukums"; }
+    if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Īss apraksts"; }
+    if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }
 
     // vārda pieejamības pārbaude
     $Pieprasijums = "SELECT * FROM projekts WHERE Nosaukums='$Nosaukums'";
@@ -50,9 +44,8 @@ if(isset($_POST['saglabat_projektu'])){
         if($Lietotajs){
             mysqli_set_charset($Datu_Baze,"utf8");
             $Lietotajs = $Lietotajs['ID_Konts'];
-            $labojamais = "UPDATE projekts SET Nosaukums='$Nosaukums', Apraksts_Iss='$Apraksts_Iss', Apraksts='$Apraksts ' WHERE ID_Konts=$Lietotajs AND ID_Projekts=$ID_Projekts";
-            echo $labojamais;
-            $labosana = mysqli_query($Datu_Baze, $labojamais);
+            $Pievienojamais = "UPDATE projekts SET Nosaukums='$Nosaukums', Apraksts_Iss='$Apraksts_Iss', Apraksts='$Apraksts ' WHERE ID_Konts=$Lietotajs AND ID_Projekts=$ID_Projekts";
+            $labosana = mysqli_query($Datu_Baze, $Pievienojamais);
             if($labosana){
                     header('location: konts.php?Saturs=2');
             }else{
@@ -62,11 +55,97 @@ if(isset($_POST['saglabat_projektu'])){
             $Kludas[]="neizdevās iegūt lietotāja ID, mēģiniet iziet un ieiet savā kontā";
         }
     }
-}else if(isset($_POST['labot_dalibnieku'])){
-    $ID_Projekts = $_POST['labot_dalibnieku '];
+}else if(isset($_POST['Atcelt_Projektu'])){
     
-}else if(isset($_POST['DzestDalibnieku'])){
-    $ID_Projekts = $_POST['DzestDalibnieku'];
-    echo $ID_Projekts;
+    unset($_SESSION['Projekta_Apraksts_Iss']);
+    unset($_SESSION['Projekta_Apraksts']);
+    unset($_SESSION['Dalibnieks_ID']);
+    unset($_SESSION['Projekta_Nosaukums']);
+    unset($_SESSION['Projekta_ID']);
+    session_write_close();
+    header('location: konts.php?Saturs=2');
+    
+    
+}else if(isset($_POST['Dzest_Projektu'])){
+    
+    $ID_Projekts = $_SESSION['Projekta_ID'];
+    $Pieprasijums = "DELETE FROM projekts WHERE ID_Projekts=$ID_Projekts LIMIT 1";
+    echo $Pieprasijums;
+    $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+    if($Rezultats){
+        header('location: konts.php?Saturs=2');
+    }else{
+        echo "Neizdevās izdzēst";
+    }
+    
+
+}else if(isset($_POST['Saglabat_Dalibnieku'])){
+    $ID_Projekts = $_POST['Saglabat_Dalibnieku'];
+    // paņem visus datus no lietotāja izmantojot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
+    $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
+    $Uzvards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards'])));
+    $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
+    if(empty($Vards)){ $Kludas[]="nepieciešams vārds"; }
+    if(empty($Uzvards)){ $Kludas[]="nepieciešams uzvārds"; }
+    if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }
+    
+    // ja nav kļūdu tad saglabā izmaiņas dalībniekam
+    if (count($Kludas) == 0) {
+        $ID_Projekts = $_SESSION['Projekta_ID'];
+        $ID_Dalibnieks = $_SESSION['Dalibnieks_ID'];
+        unset($_SESSION['Dalibnieks_ID']);
+        mysqli_set_charset($Datu_Baze,"utf8");
+        $Pievienojamais = "UPDATE dalibnieks SET Vards='$Vards', Uzvards='$Uzvards', Apraksts='$Apraksts ' WHERE ID_Dalibnieks=$ID_Dalibnieks AND ID_Projekts=$ID_Projekts";
+        $labosana = mysqli_query($Datu_Baze, $Pievienojamais);
+        if($labosana){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            //header('location: konts.php?Saturs=2');
+        }else{
+            $Kludas[]="radās kļūda labojot Dalibnieku, mēģiniet vēlāk";
+        }          
+    }
+    
+    
+}else if(isset($_POST['Saglabat_Pievienoto_Dalibnieku'])){
+    // paņem visus datus no lietotāja izmantojot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
+    $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
+    $Uzvards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards'])));
+    $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
+    if(empty($Vards)){ $Kludas[]="nepieciešams vārds"; }
+    if(empty($Uzvards)){ $Kludas[]="nepieciešams uzvārds"; }
+    if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }
+    
+    // ja nav kļūdu tad saglabā izmaiņas dalībniekam
+    if (count($Kludas) == 0){
+        $ID_Projekts = $_SESSION['Projekta_ID'];
+        mysqli_set_charset($Datu_Baze,"utf8");
+        $Pievienojamais = "INSERT INTO dalibnieks (Vards, Uzvards, Apraksts, ID_Projekts) values ('$Vards', '$Uzvards', '$Apraksts', $ID_Projekts)";
+        echo $Pievienojamais;
+        $pievienosana = mysqli_query($Datu_Baze, $Pievienojamais);
+        if($pievienosana){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            //header('location: konts.php?Saturs=2');
+        }else{
+            $Kludas[]="radās kļūda pievienojot Dalibnieku, mēģiniet vēlāk";
+        }          
+    }
+    
+    
+}else if(isset($_POST['Dzest_Dalibnieku'])){
+    $ID_Dalibnieks = $_POST['Dzest_Dalibnieku'];
+    $Pieprasijums = "DELETE FROM dalibnieks WHERE ID_Dalibnieks=$ID_Dalibnieks LIMIT 1";
+    $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+    if($Rezultats){
+    }else{
+        echo "Neizdevās izdzēst";
+    }
+    
+}else if(isset($_POST['Atcelt_Darbibu'])){
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     
 }
+
+
+
+
+

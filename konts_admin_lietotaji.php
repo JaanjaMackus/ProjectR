@@ -1,21 +1,7 @@
 <?php include('konts_admin_lietotaji_parbaude.php'); ?>
-<div class="Smalks_PilnsSaturs_1_5">
-<!--   pilna loga divs  -->
-<div class="Smalks_Pilns_1_5"><h3>pilns loga garums visa garuma ja vajag</h3></div>
-
-<!--  ja vajag 4 kolunnas atsevisķi  -->
-<div><p>1kolonna</p></div>
-<div><p>2kolonna</p></div>
-<div><p>3kolonna</p></div>
-<div><p>4kolonna</p></div>
-
-<!--  ja vajag 2 kolunnas atsevisķi  -->
-<div class="Projekts"><p>11 kolonna</p></div>
-<div class="Projekts"><p>12 kolonna</p></div>
-
-
 
 <div class="Smalks_Pilns_1_5">
+    <h3>Meklēt lietotājus pēc E-pasta</h3>
     <form method="post">
         <input value='' type='text' name='E_Pasts' class='Ievade_Ievads' placeholder='E-pasts' autofocus>
         <input type='submit' name='Meklet' value='Meklēt' class='Ievade_Poga'>
@@ -45,7 +31,6 @@
 
 
 ?>
-</div>
 </div>
 
 

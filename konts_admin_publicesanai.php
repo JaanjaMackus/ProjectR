@@ -13,7 +13,7 @@ if(mysqli_num_rows($Rezultats)!=0){
             </div>";
     }
 }else{
-    echo "<div class='Projekts Konta_teksts'><h3>Nav neviena pieprasījuma projektu publicēšanai</h3></div>";
+    echo "<div class='Smalks_Pilns_1_5 Konta_teksts'><h3>Nav neviena pieprasījuma projektu publicēšanai</h3></div>";
 }
 
 

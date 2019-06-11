@@ -32,7 +32,9 @@ a{
     display: block;
     margin-top: 4vw;
 }
-
+.Atstarpe_Apaksa{
+    margin-bottom: 4vw;
+}
 a:hover{
     cursor: pointer;
 }
@@ -254,6 +256,7 @@ body {
     grid-column: 1/3;
     grid-row: 1;
     background: #062836;
+    margin-bottom: 4vw;
 }
 .Konts_Nav a{
     font-size: 3vw;
@@ -311,22 +314,26 @@ body {
 .Konts_lietotaji{
     
 }
-.Konts_lietotaji:nth-child(even){
+.Konts_lietotaji:nth-child(odd){
     height: 1.2vw;
     padding: 0.8vw 0;
     border-bottom: 0.2vw solid #aabbcc;
 }
-.Konts_lietotaji:nth-child(odd){
+.Konts_lietotaji:nth-child(even){
     margin-top: -2.2vw;
     float: right;
 }
-.Konts_lietotaji:nth-child(odd) a{
+.Konts_lietotaji:nth-child(even) a{
     padding: 0 1.5vw;
 }
 
 .dalibnieks .poga_blakus{
     margin: 1vw 1vw 0 0;
     float: left;
+}
+.Smalks_Pilns_1_5 .Atcelt_Poga{
+    padding: 1vw 2vw 2vw 0;
+    font-size: 3.3vw ;
 }
 /*.Ievade_Paradit_Poga .Ievade_Paslepts{
     display: none;
@@ -537,7 +544,7 @@ h2{
     line-height: 4vw;
 }
 .dalibnieks{
-    margin-top: 2.5vw;
+    margin-top: 8vw;
     display: grid;
     grid-gap: 2vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -549,7 +556,10 @@ h2{
 .Smalks_Pilns_1_5 form .Saura_Poga:nth-child(even){
     float: right;
 }
-
+.Smalks_Pilns_1_5 .Atcelt_Poga{
+    padding: 1vw 2vw 2vw 0;
+    font-size: 2.2vw ;
+}
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */
 
 .Ievade_Ievads{
@@ -650,7 +660,10 @@ h2{
     padding: 0.8vw 1.5vw;
     margin-right: 2vw;
 }
-    
+.Smalks_Pilns_1_5 .Atcelt_Poga{
+    padding: 1vw 2vw 2vw 0;
+    font-size: 1.8vw ;
+}
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */
 
 .Ievade_Ievads{

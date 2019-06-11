@@ -4,7 +4,7 @@ $Kludas = array();
 
 // datubāzes konekcija
 include('db.php');
-// Lietotāja reģistrācija
+// Lietotāja meklēšana
 if (isset($_POST['Meklet'])) {
     // paņem visus datus no lietotāja izmantjot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
     $E_Pasts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['E_Pasts'])));
