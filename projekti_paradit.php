@@ -17,7 +17,3 @@
             }
         }  
         ?>
-        <div class="Smalks_Pilns Vizualizesanai">
-            <h1>Vieta kur būs datu filtrēšana un attēlošana</h1>
-            
-        </div>

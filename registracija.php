@@ -7,6 +7,7 @@ $_SESSION['Sadala']='Registreties'; ?>
     <title>Datu Vizualizēšana</title>
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <meta charset="UTF-8">
 </head>
 
 
