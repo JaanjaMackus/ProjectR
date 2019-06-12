@@ -89,6 +89,16 @@ if(isset($_POST['Saglabat_Projektu'])){
     
     
     
+}else if(isset($_POST['Privatizet_Projektu'])){
+    $ID_Projekts = $_SESSION['Projekta_ID'];
+    $Pieprasijums = "UPDATE projekts SET VaiPublisks=0 WHERE ID_Projekts=$ID_Projekts";
+    $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+    if(!$Rezultats){
+        echo "neizdevās projekta privatizēšanas pieprase";
+    }
+    
+    
+    
 }else if(isset($_POST['Saglabat_Dalibnieku'])){
     // paņem visus datus no lietotāja izmantojot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
     $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
