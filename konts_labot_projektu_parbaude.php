@@ -79,8 +79,17 @@ if(isset($_POST['Saglabat_Projektu'])){
     }
     
 
+}else if(isset($_POST['Publicet_Projektu'])){
+    $ID_Projekts = $_SESSION['Projekta_ID'];
+    $Pieprasijums = "UPDATE projekts SET VaiPublisks=2 WHERE ID_Projekts=$ID_Projekts";
+    $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+    if(!$Rezultats){
+        echo "neizdevās projekta publicēšanas pieprase";
+    }
+    
+    
+    
 }else if(isset($_POST['Saglabat_Dalibnieku'])){
-    $ID_Projekts = $_POST['Saglabat_Dalibnieku'];
     // paņem visus datus no lietotāja izmantojot vairākas funkcijas, lai pasargātu no ļaunprātīgiem ierakstiem
     $Vards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Vards'])));
     $Uzvards = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Uzvards'])));
@@ -132,6 +141,13 @@ if(isset($_POST['Saglabat_Projektu'])){
     
     
 }else if(isset($_POST['Dzest_Dalibnieku'])){
+    $Nosaukums = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Nosaukums'])));
+    $Apraksts_Iss = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts_Iss'])));
+    $Apraksts = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
+    $_SESSION['Projekta_Nosaukums']=$Nosaukums;
+    $_SESSION['Projekta_Apraksts_Iss']=$Apraksts_Iss;
+    $_SESSION['Projekta_Apraksts']=$Apraksts;
+    
     $ID_Dalibnieks = $_POST['Dzest_Dalibnieku'];
     $Pieprasijums = "DELETE FROM dalibnieks WHERE ID_Dalibnieks=$ID_Dalibnieks LIMIT 1";
     $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);

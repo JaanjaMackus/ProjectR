@@ -29,6 +29,18 @@
         
         
         <input type="submit" name="Dzest_Projektu" value="Dzēst Projektu" class="Ievade_Poga Saura_Poga">
+        <?php
+        $ID_Projekts = $_SESSION['Projekta_ID'];
+        $Pieprasijums = "SELECT VaiPublisks FROM projekts WHERE ID_Projekts=$ID_Projekts";
+        $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+        $Dalibnieks = mysqli_fetch_assoc($Rezultats);
+        if($Dalibnieks['VaiPublisks'] != 1 && $Dalibnieks['VaiPublisks'] != 2){
+            echo "<input type='submit' name='Publicet_Projektu' value='Pieprasīt publicēšanu' class='Ievade_Poga Saura_Poga'>";
+        }else{
+            echo "<span class='Jauna_Rinda'></span>";
+        }
+        
+        ?>
         <input type="submit" name="Atcelt_Projektu" value="Atcelt labojumus" class="Ievade_Poga Saura_Poga">
         <input type="submit" name="Saglabat_Projektu" value="Saglabāt labojumus" class="Ievade_Poga Saura_Poga">
     </form>

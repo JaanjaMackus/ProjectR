@@ -335,6 +335,10 @@ body {
     padding: 1vw 2vw 2vw 0;
     font-size: 3.3vw ;
 }
+.Jauna_Rinda{
+    display: block;
+    clear: both;
+}
 /*.Ievade_Paradit_Poga .Ievade_Paslepts{
     display: none;
 }

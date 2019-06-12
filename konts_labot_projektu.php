@@ -98,6 +98,9 @@
                         $Apraksts_Iss = $Projekts['Apraksts_Iss'];
                         $Apraksts = $Projekts['Apraksts'];
                         $_SESSION['Projekta_ID'] = $ID_Projekts;
+                        $_SESSION['Projekta_Nosaukums'] = $Nosaukums;
+                        $_SESSION['Projekta_Apraksts_Iss'] = $Apraksts_Iss;
+                        $_SESSION['Projekta_Apraksts'] = $Apraksts;
                         include('konts_labot_projektu_forma.php');
                     }else{
                         echo "<h3>Jūs nevarat labot projektu, kas nepieder jums</h3>";

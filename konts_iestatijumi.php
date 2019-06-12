@@ -8,7 +8,7 @@
           echo "<p class='kluda'>$Kluda</p>";
     }
     } ?>
-    <form method="post">
+    <form class="Atstarpe_Apaksa" method="post">
         <h2>Vārds</h2>
         <input value="<?php echo $Vards ?>"
                maxlength="20" 
@@ -57,7 +57,7 @@
             </label>
         <input type="submit" name="Saglabat_Izmainas" value="Saglabāt izmaiņas" class="Ievade_Poga">
     </form>
-
+<a class="Pievienot_poga Atcelt_Poga" href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Atcelt</a>
 
 
 
