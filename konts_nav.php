@@ -29,7 +29,7 @@
                     
                 }
                 echo "<a href='?Saturs=4'><li ".(($Konts_Izvelets==4)?'class="Konts_Izvelets"':"").">Lietotāju pārvaldīšana</li></a>
-                <a href='?Saturs=5'><li ".(($Konts_Izvelets==5)?'class="Konts_Izvelets"':"").">projekti publicēšanai ($skaits)</li></a>";
+                <a href='?Saturs=5'><li ".(($Konts_Izvelets==5)?'class="Konts_Izvelets"':"").">Projekti publicēšanai ($skaits)</li></a>";
             } ?>
         </ul>
     </div>

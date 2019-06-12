@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 4 limit 1500";
+$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 4 limit 500";
 $result = $Datu_Baze->query($sql);
 $dataPoints1 = array();
 
@@ -10,7 +10,7 @@ if ($result->num_rows > 0) {
 	}
 }
 
-$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 5 limit 1500";
+$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 5 limit 500";
 $result2 = $Datu_Baze->query($sql);
 $dataPoints2 = array();
 
@@ -29,21 +29,22 @@ $Datu_Baze->close();
 
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
+        zoomEnabled: true,
         title:{
             text: "Dati no DB" // Jauzstaisa lai nosaukums ir izvele dropdown veida vai input veida
         },
         axisX:{
-            valueFormatString: "DD-MM HH:mm:ss",
+            valueFormatString: "YYYY-DD-MM HH:mm:ss",
             intervalType: "hour", // Jauzstaisa lai ir izvele dropdown veida "minute" "hour" "day"
             interval: 1, // Jauzstaisa lai ir izvele dropdown veida - intervals starp nakamo datumu/laiku
-            title: "Laiks"
+            title: "Datums"
         },
         axisY:{
             title: "Vertiba 1", // Jauzstaisa lai nosaukums ir izvele dropdown veida
             titleFontColor: "#4F81BC",
             lineColor: "#4F81BC",
             labelFontColor: "#4F81BC",
-            tickColor: "#4F81BC"
+            tickColor: "#4F81BC",
         },
         axisY2:{
             title: "Vertiba 2", // Jauzstaisa lai nosaukums ir izvele dropdown veida
@@ -58,22 +59,27 @@ $Datu_Baze->close();
             dockInsidePlotArea: true,
             itemclick: toggleDataSeries
         },
+        toolTip:{
+            shared: true
+        },
         data: [{
             type: "line",
             name: "Mervieniba 1", // Jauzstaisa lai nosaukums ir izvele dropdown veida
             markerSize: 0,
-            toolTipContent: "Datums: {x} <br>{name}: {y} W/m", // Jauzstaisa lai [W/m] ir izvele dropdown veida
+            toolTipContent: "Laiks Mer.1: {x} <br>{name}: {y} W/m", // Jauzstaisa lai [W/m] ir izvele dropdown veida
             showInLegend: true,
             xValueType: "dateTime",
+            xValueFormatString: "HH:mm:ss",
             dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
         },{
             type: "line",
             axisYType: "secondary",
             name: "Mervieniba 2",
             markerSize: 0,
-            toolTipContent: "Datums: {x} <br>{name}: {y} KPH", // Jauzstaisa lai KPH ir izvele dropdown veida
+            toolTipContent: "Laiks Mer.2: {x} <br>{name}: {y} KPH", // Jauzstaisa lai KPH ir izvele dropdown veida
             showInLegend: true,
             xValueType: "dateTime",
+            xValueFormatString: "HH:mm:ss",
             dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
         }]
     });
