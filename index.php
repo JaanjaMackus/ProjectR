@@ -24,7 +24,6 @@ $_SESSION['Sadala']='Sakums';
     <div class="Saturs">
         <div class="Vidus">
             <h1>Sveicināti datu vizuālās apskates lapā, kurā varat apskatīt citu veidotos projektus un pievienot savus!</h1>
-            <h3 class="Atstarpe_Auksa">Lai pievienotu savus projektus un saglabātu filtrus nepieciešams reģistrēties <a href="registracija.php">šeit</a></h3>
         </div>
         <div class="blakus"><p>Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..</p>
         </div>
