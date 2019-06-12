@@ -46,13 +46,13 @@
                oninvalid="setCustomValidity('Vismaz 10 simbolu parolei nepieciešams 1 cipars, 1 lielais un 1 mazais burts')" 
                oninput="setCustomValidity('')"
                title="Parole" class="Ievade_Ievads Ievade_Paslepts"
-               placeholder="Parole">
+               placeholder="Jaunā parole">
         <h2 class="Ievade_Paslepts">Atkārtotā parole</h2>
         <input type="password" name="Parole_2"
                maxlength="30"
                title="Atkārtotā parole"
                class="Ievade_Ievads Ievade_Paslepts"
-               placeholder="Atkārtota Parole">
+               placeholder="Atkārtota jaunā parole">
             </span>
             </label>
         <input type="submit" name="Saglabat_Izmainas" value="Saglabāt izmaiņas" class="Ievade_Poga">

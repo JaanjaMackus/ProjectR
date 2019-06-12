@@ -37,7 +37,7 @@
         if($Dalibnieks['VaiPublisks'] != 1 && $Dalibnieks['VaiPublisks'] != 2){
             echo "<input type='submit' name='Publicet_Projektu' value='Pieprasīt publicēšanu' class='Ievade_Poga Saura_Poga'>";
         }else{
-            echo "<input type='submit' name='Privatizet_Projektu' value='privatizēt' class='Ievade_Poga Saura_Poga'>";
+            echo "<input type='submit' name='Privatizet_Projektu' value='Privatizēt' class='Ievade_Poga Saura_Poga'>";
         }
         
         ?>

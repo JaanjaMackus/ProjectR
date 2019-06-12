@@ -6,53 +6,6 @@ $_SESSION['Sadala']='Projekti';
 // datubāzes konekcija
 include('db.php');
 
-
-
-
-
-
-
-
-
-
-$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 4 limit 500";
-$result = $Datu_Baze->query($sql);
-$dataPoints1 = array();
-
-if($result->num_rows > 0){
-	// output data of each row
-	while($row = mysqli_fetch_row($result)) {
-		$dataPoints1[] = array("x" => (strtotime($row[0])*1000), "y" => $row[1]); 
-	}
-}
-
-$sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 5 limit 500";
-$result2 = $Datu_Baze->query($sql);
-$dataPoints2 = array();
-
-if ($result2->num_rows > 0) {
-	// output data of each row
-	while($row = mysqli_fetch_row($result2)) {
-		$dataPoints2[] = array("x" => (strtotime($row[0])*1000), "y" => $row[1]); 
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,8 +14,6 @@ if ($result2->num_rows > 0) {
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        
-    
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
 function grafs() {
@@ -149,6 +100,11 @@ function toggleDataSeries(e){
             $Pieprasijums = "UPDATE projekts SET VaiPublisks=0 WHERE ID_Projekts='$ID_Projekts'";
             $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
             if(mysqli_affected_rows($Datu_Baze) > 0){
+                ?>
+                <script type="text/javascript">
+                    window.location.href = 'konts.php?Saturs=5';
+                </script>
+                <?php
                 header('Location: konts.php?Saturs=5');
             }else{
                 echo "Neizdevās noraidīt projektu";
@@ -158,6 +114,11 @@ function toggleDataSeries(e){
             $Pieprasijums = "UPDATE projekts SET VaiPublisks=1 WHERE ID_Projekts='$ID_Projekts'";
             $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
             if(mysqli_affected_rows($Datu_Baze) > 0){
+                ?>
+                <script type="text/javascript">
+                    window.location.href = 'konts.php?Saturs=5';
+                </script>
+                <?php
                 header('Location: konts.php?Saturs=5');
             }else{
                 echo "Neizdevās apstiprināt projektu";
@@ -201,11 +162,13 @@ function toggleDataSeries(e){
     </div>
 <div class="Vizualizesanai">
     <?php include('grafs.php'); ?>     
-
-</div>
+                    <br><br>
+                <form method='post'>
                     <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
                     <button class='konts_poga' type='submit' name='Publicesana' value='Noraidit'>Noraidīt</button>
-                    <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button>
+                    <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button><br><br>
+                </form>
+    </div>
                     <?php
                 }else if($Lietotajs['ID_Konts'] == $Projekts['ID_Konts']){
                     include('projekti_paradit.php');
