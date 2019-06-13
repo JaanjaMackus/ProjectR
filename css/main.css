@@ -50,6 +50,26 @@ a:hover{
     height: 300px;
     width: 100%;
 }
+.filtrs{
+    margin-bottom: 4vw;
+}
+
+form .filtrs input{
+    height: 4vw;
+    font-size: 3vw;
+}
+.filtrs select{
+    height: 4vw;
+    font-size: 3vw;
+}
+.filtrs select:last-child{
+    margin-left: 6vw;
+}
+.Otra_Rinda{
+    display: block;
+    margin-bottom: 1.25vw;
+}
+
 
 
 
@@ -434,7 +454,21 @@ h2{
 #chartContainer{
     height: 500px;
 }
-    
+.filtrs{
+    margin-bottom: 0;
+}
+form .filtrs input{
+    height: 1.6vw;
+    font-size: 1.5vw;
+}
+form .filtrs select{
+    height: 1.8vw;
+    font-size: 1.5vw;
+    margin-bottom: 2vw;
+} 
+.Otra_Rinda{
+    display: inline-block;
+}
     
     
     
