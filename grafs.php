@@ -9,20 +9,13 @@ $m1 = "";
 $m2 = "";
 $s1 = "";
 $s2 = "";
+$Nosaukums = "";
 $biezums = 1;
 $intervals = "hour";
 if(isset($_GET['filtrs'])){
     //05:29:38
     //SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 1 AND Dates BETWEEN '2016-03-09 05:29:38' AND '2016-03-09 05:52:38'
-    //2016-03-09 05:52:38
-    
-    $string = "2016-03-09 05:52:38"; 
-    $str_arr = explode (" ", $string);  
-    print_r($str_arr);
-    $string = $str_arr[1]; 
-    $str_arr = explode (":", $string);  
-    print_r($str_arr); 
-    
+    //2016-03-09 05:52:38    
     
     if(isset($_GET['datums1'])&& $_GET['datums1'] != 0 ){
         if(isset($_GET['h1'])&& $_GET['h1'] != 0 ){
@@ -107,18 +100,50 @@ if(isset($_GET['biezums']) && $_GET['biezums'] != 0){
 }else{
     $biezums = 1;
 }
+if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
+    $Nosaukums = $_GET['Nosaukums'];
+}
+
 }else if(isset($_GET['filtrs_Saglabat'])){
     if(isset($_SESSION['E_Pasts'])){
-        $sql = "INSERT INTO Dates, Vertiba FROM merijums Where ID_Mervieniba = ".$_GET['mervieniba1']." $datums1 $datums2 ";
-        echo "<p>".$sql."</p><br>";
-        $Rezultats = $Datu_Baze->query($sql);
-        $dataPoints1 = array();
-        if($Rezultats){
-        
+        $E_Pasts = $_SESSION['E_Pasts'];
+        mysqli_set_charset($Datu_Baze,"utf8");
+        $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
+        $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+        $Lietotajs = mysqli_fetch_assoc($Rezultats);
+        if($Lietotajs){
+            if(isset($_GET['intervals']) && $_GET['intervals'] != "" ){
+                $intervals = $_GET['intervals'];
+            }else{
+                $intervals = "hour";
+            }
+            if(isset($_GET['biezums']) && $_GET['biezums'] != 0){
+                $biezums = $_GET['biezums'];
+            }else{
+                $biezums = 1;
+            }
+            $ID_Konts = $Lietotajs['ID_Konts'];
+            $ID_Projekts = $_GET['Apskatit'];
+            $mervieniba1 = $_GET['mervieniba1'];
+            $mervieniba2 = $_GET['mervieniba2'];
+            $No_Datums = $_GET['datums1']." ".$_GET['h1'].":".$_GET['m1'].":".$_GET['s1'];
+            $Lidz_Datums = $_GET['datums2']." ".$_GET['h2'].":".$_GET['m2'].":".$_GET['s2'];
+            $Nosaukums = $_GET['Nosaukums'];
+            
+            $sql = "INSERT INTO atskaite(Nosaukums,ID_Mervieniba1, ID_Mervieniba2,  NO_Datums, Lidz_Datums, Datuma_Biezums, Datuma_Intervals, ID_Projekts, ID_Konts) values ('$Nosaukums', '$mervieniba1' , '$mervieniba2',  '$No_Datums', '$Lidz_Datums', $biezums, '$intervals', $ID_Projekts, $ID_Konts)";
+            echo "<p>".$sql."</p><br>";
+            $Rezultats = $Datu_Baze->query($sql);
+            if(!$Rezultats){
+                echo "neizdevās saglabāt filtru";
+            }else{
+                header("location: ".$_SERVER['HTTP_REFERER']);
+            }
+        }else{
+            echo "neatrada lietotāju";
         }
         
     }else{
-        echo "<h3 class='kluda'>Nepieciešams pieslēgties, lai saglabātu filtru, vai arī saglabājiet šīs lapas pilno adresi</h3><br>";
+        echo "<h3 class='kluda'>Nepieciešams pieslēgties, lai saglabātu filtru, vai arī var saglabāt šīs lapas pilno adresi</h3><br>";
     }
     
 }
@@ -205,6 +230,9 @@ if(isset($_GET['biezums']) && $_GET['biezums'] != 0){
         H: <input value="<?php echo $h2 ?>" name="h2" type="number" min="0" max="23" placeholder="00">
         M: <input value="<?php echo $m2 ?>" name="m2" type="number" min="0" max="59" placeholder="00">
         S: <input value="<?php echo $s2 ?>" name="s2" type="number" min="0" max="59" placeholder="00">
+        </p>
+        <p class="filtrs">
+        <input value="<?php echo $Nosaukums; ?>" name="Nosaukums" type="text" placeholder="Filtra Nosaukums">
         </p>
         
         
