@@ -87,17 +87,21 @@ include('db.php');
             if($Lietotajs){
                 
                 if($Lietotajs['Tiesibas'] == 1){
+                    ?>
+                <form class="AdminPogas" method='post'>
+                    <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
+                    <button class='konts_poga' type='submit' name='Publicesana' value='Noraidit'>Noraidīt</button>
+                    <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button><br><br>
+                </form>
+    
+    
+                    <?php
                     include('projekti_paradit.php');
                     ?>
     </div>
 <div class="Vizualizesanai">
     <?php include('grafs.php'); ?>     
-                    <br><br>
-                <form method='post'>
-                    <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
-                    <button class='konts_poga' type='submit' name='Publicesana' value='Noraidit'>Noraidīt</button>
-                    <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button><br><br>
-                </form>
+
     </div>
                     <?php
                 }else if($Lietotajs['ID_Konts'] == $Projekts['ID_Konts']){

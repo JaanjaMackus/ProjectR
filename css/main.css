@@ -324,6 +324,15 @@ body {
     margin-right: 8vw;
     color: #062836;
 }
+.AdminPogas{
+    margin-left: 5vw;
+    grid-column: 1/3;
+}
+.AdminPogas button{
+    line-height: 3vw;
+    padding: 2vw 5vw;
+    font-size: 3vw;
+}
 .dalibnieks{
     margin-top: 3vw;
     display: grid;
@@ -594,6 +603,15 @@ form .filtrs select{
     margin-right: 2vw;
     line-height: 4vw;
 }
+.AdminPogas{
+    margin-left: 0vw;
+    grid-column: 1/6;
+}
+.AdminPogas button{
+    line-height: 2vw;
+    padding: 1vw 3vw;
+    font-size: 2vw;
+}
 .dalibnieks{
     margin-top: 8vw;
     display: grid;
@@ -717,7 +735,11 @@ h2{
     padding: 0.8vw 1.5vw;
     margin-right: 2vw;
 }
-
+.AdminPogas button{
+    line-height: 2vw;
+    padding: 0.6vw 3vw;
+    font-size: 1.5vw;
+}
 .Smalks_Pilns_1_5 .Atcelt_Poga{
     padding: 1vw 2vw 2vw 0;
     font-size: 1.8vw ;

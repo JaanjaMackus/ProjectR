@@ -67,7 +67,6 @@ if(isset($_GET['filtrs'])){
     }
 
     $sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = ".$_GET['mervieniba1']." $datums1 $datums2 ";
-    echo "<p>".$sql."</p><br>";
     $Rezultats = $Datu_Baze->query($sql);
     $dataPoints1 = array();
     if($Rezultats){
