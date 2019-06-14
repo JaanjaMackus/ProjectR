@@ -25,11 +25,17 @@
                 if($daudzums['skaits']>0){
                     $skaits = $daudzums['skaits'];
                 }
-                if($Konts_Izvelets==4){
-                    
+                $ZinSkaits=0;
+                $Pieprasijums = "SELECT count(ID_Zinojums) as skaits from zinojums";
+                $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+                $daudzums = mysqli_fetch_assoc($Rezultats);
+                if($daudzums['skaits']>0){
+                    $ZinSkaits = $daudzums['skaits'];
                 }
+
                 echo "<a href='?Saturs=4'><li ".(($Konts_Izvelets==4)?'class="Konts_Izvelets"':"").">Lietotāju pārvaldīšana</li></a>
-                <a href='?Saturs=5'><li ".(($Konts_Izvelets==5)?'class="Konts_Izvelets"':"").">Projekti publicēšanai ($skaits)</li></a>";
+                <a href='?Saturs=5'><li ".(($Konts_Izvelets==5)?'class="Konts_Izvelets"':"").">Projekti publicēšanai ($skaits)</li></a>
+                <a href='?Saturs=6'><li ".(($Konts_Izvelets==6)?'class="Konts_Izvelets"':"").">Ziņojumi ($ZinSkaits)</li></a>";
             } ?>
         </ul>
     </div>

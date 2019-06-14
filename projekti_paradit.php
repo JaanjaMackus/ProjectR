@@ -2,7 +2,7 @@
 
 
         <div class="Smalks_Pilns">
-            <h1><?php echo $Projekts['Nosaukums']; ?></h1>
+            <h1><?php echo $Projekts['Nosaukums']; if(isset($_SESSION['E_Pasts'])){?><form method="post" class="Zinojums_Poga"><button value="<?php echo $Projekts['ID_Projekts']; ?>" name="zinot">(ziņot par pārkāpumu)</button></form><?php } ?></h1>
             <p class="apraksts"><?php echo $Projekts['Apraksts']; ?></p>
         </div>
         <?php

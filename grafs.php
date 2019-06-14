@@ -130,7 +130,6 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
             $Nosaukums = $_GET['Nosaukums'];
             
             $sql = "INSERT INTO atskaite(Nosaukums,ID_Mervieniba1, ID_Mervieniba2,  NO_Datums, Lidz_Datums, Datuma_Biezums, Datuma_Intervals, ID_Projekts, ID_Konts) values ('$Nosaukums', '$mervieniba1' , '$mervieniba2',  '$No_Datums', '$Lidz_Datums', $biezums, '$intervals', $ID_Projekts, $ID_Konts)";
-            echo "<p>".$sql."</p><br>";
             $Rezultats = $Datu_Baze->query($sql);
             if(!$Rezultats){
                 echo "neizdevās saglabāt filtru";
@@ -231,7 +230,7 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
         S: <input value="<?php echo $s2 ?>" name="s2" type="number" min="0" max="59" placeholder="00">
         </p>
         <p class="filtrs">
-        <input value="<?php echo $Nosaukums; ?>" name="Nosaukums" type="text" placeholder="Filtra Nosaukums">
+        <input class="Filtra_Nosaukums" value="<?php echo $Nosaukums; ?>" name="Nosaukums" type="text" placeholder="Filtra Nosaukums">
         </p>
         
         

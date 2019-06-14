@@ -25,6 +25,7 @@
         case 3: $Konts_Izvelets=3; include 'konts_iestatijumi.php'; break;
         case 4: $Konts_Izvelets=4; include 'konts_admin_lietotaji.php'; break;
         case 5: $Konts_Izvelets=5; include 'konts_admin_publicesanai.php'; break;
+        case 6: $Konts_Izvelets=6; include 'konts_admin_zinojumi.php'; break;
         default: $Konts_Izvelets=1; include 'konts_filtri.php';
         
         }

@@ -22,7 +22,39 @@ include('db.php');
     <div class="Atstarpe"></div>
     <?php
         
-    if(isset($_POST['Publicesana'])){
+    if(isset($_POST['zinot_sutit'])){
+        mysqli_set_charset($Datu_Baze,"utf8");
+        $Zina = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
+        $E_Pasts = $_SESSION['E_Pasts'];
+        $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
+        $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
+        $Lietotajs = mysqli_fetch_assoc($Rezultats);
+        if($Lietotajs){
+            $Ievietojamais = "INSERT INTO zinojums (Zina, ID_Konts, ID_Projekts)
+            VALUES('$Zina', ".$Lietotajs['ID_Konts'].", ".$_POST['Projekta_ID'].")";
+            $Zinosana = mysqli_query($Datu_Baze, $Ievietojamais);
+            if($Zinosana){
+                header('location: projekti.php');
+            }else{
+                echo "radās kļūda, mēģiniet vēlāk";
+            }
+        }else{
+            echo "neatrada lietotāju";
+        }
+        
+    }else if(isset($_POST['zinot'])){
+        echo "<form class='Saturs Saturs_Smalks' method='post'>";
+        ?>
+    <div class="Smalks_Pilns_1_5">
+        <textarea type="text" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Ziņa līdz 500 simboliem" required></textarea>
+        <input class="konts_poga" type="submit" name="zinot_sutit" value="Sūtīt ziņu">
+        <input type="hidden" name="Projekta_ID" value="<?php echo $_POST['zinot']; ?>">
+        </form>
+    </div>
+        
+    <?php
+        
+    }else if(isset($_POST['Publicesana'])){
         echo "<form class='Saturs Saturs_Smalks' method='post'>";
         $ID_Projekts = $_POST['ID_Projekts'];
         if($_POST['Publicesana']=='Noraidit'){
