@@ -70,7 +70,6 @@ if(isset($_POST['Saglabat_Projektu'])){
     
     $ID_Projekts = $_SESSION['Projekta_ID'];
     $Pieprasijums = "DELETE FROM projekts WHERE ID_Projekts=$ID_Projekts LIMIT 1";
-    echo $Pieprasijums;
     $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
     if($Rezultats){
         header('location: konts.php?Saturs=2');
@@ -139,7 +138,6 @@ if(isset($_POST['Saglabat_Projektu'])){
         $ID_Projekts = $_SESSION['Projekta_ID'];
         mysqli_set_charset($Datu_Baze,"utf8");
         $Pievienojamais = "INSERT INTO dalibnieks (Vards, Uzvards, Apraksts, ID_Projekts) values ('$Vards', '$Uzvards', '$Apraksts', $ID_Projekts)";
-        echo $Pievienojamais;
         $pievienosana = mysqli_query($Datu_Baze, $Pievienojamais);
         if($pievienosana){
             header('Location: ' . $_SERVER['HTTP_REFERER']);

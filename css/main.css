@@ -68,6 +68,9 @@ form .filtrs input{
     display: block;
     margin-bottom: 1.25vw;
 }
+.Forma_Pilna{
+    width: 100%;
+}
 
 
 
@@ -373,6 +376,19 @@ body {
     display: block;
     clear: both;
 }
+.Dzest_Filtru{
+    width: 7vw;
+    height: 7vw;
+    margin: 0vw 0 0 -4vw;
+    border: 0;
+    border-radius: 1.5vw;
+    background: #062836;
+    color: #DD0000;
+    font-size: 4vw;
+}
+.Dzest_Filtru:hover{
+    cursor: pointer;
+}
 /*.Ievade_Paradit_Poga .Ievade_Paslepts{
     display: none;
 }
@@ -629,6 +645,13 @@ form .Saura_Poga:nth-child(even){
     padding: 1vw 2vw 2vw 0;
     font-size: 2.2vw ;
 }
+.Dzest_Filtru{
+    width: 3.6vw;
+    height: 3.6vw;
+    margin: 0vw 0 0 -1vw;
+    border-radius: 0.8vw;
+    font-size: 2vw;
+}
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */
 
 .Ievade_Ievads{
@@ -743,6 +766,13 @@ h2{
 .Smalks_Pilns_1_5 .Atcelt_Poga{
     padding: 1vw 2vw 2vw 0;
     font-size: 1.8vw ;
+}
+.Dzest_Filtru{
+    width: 3vw;
+    height: 3vw;
+    margin: 0vw 0 0 -0.5vw;
+    border-radius: 0.7vw;
+    font-size: 1.8vw;
 }
 /* /////////////////////////////////////////////////////////////////// REGISTER /// */
 
