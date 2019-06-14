@@ -43,10 +43,11 @@ a:hover{
 }
 .Vizualizesanai{
     width: 80%;
-    margin: -5% 10% 40% 10%;
+    margin: -5% 10% 100% 10%;
     max-height: 100px;
 }
 #chartContainer{
+    margin-top: 5%;
     height: 300px;
     width: 100%;
 }
@@ -61,9 +62,7 @@ form .filtrs input{
 .filtrs select{
     height: 4vw;
     font-size: 3vw;
-}
-.filtrs select:last-child{
-    margin-left: 6vw;
+    margin-right: 1vw;
 }
 .Otra_Rinda{
     display: block;
@@ -81,6 +80,9 @@ body {
 }
 .Atstarpe{
     height: 9vw;
+}
+.Atstarpe_Maza{
+    height: 3vw;
 }
 .Saturs{
     display: grid;
@@ -433,7 +435,10 @@ h2{
 }
 .Atstarpe{
     height: 8vw;
-}   
+}
+.Atstarpe_Maza{
+    height: 6vw;
+}
 .Smalks_Pilns{
     grid-column: 1/6;
     
@@ -469,7 +474,11 @@ form .filtrs select{
 .Otra_Rinda{
     display: inline-block;
 }
+.Vizualizesanai{
+    margin-bottom: 65%;
+}  
     
+
     
     
 .Saturs {
@@ -591,11 +600,11 @@ form .filtrs select{
     grid-gap: 2vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.Smalks_Pilns_1_5 form .Saura_Poga{
+form .Saura_Poga{
     width: 42%;
     float: left;
 }
-.Smalks_Pilns_1_5 form .Saura_Poga:nth-child(even){
+form .Saura_Poga:nth-child(even){
     float: right;
 }
 .Smalks_Pilns_1_5 .Atcelt_Poga{
@@ -666,7 +675,7 @@ h2{
     height: 7vw;
 }
 .Vizualizesanai{
-    margin-bottom: 35%;
+    margin-bottom: 60%;
 }
 #chartContainer{
     height: 600px;

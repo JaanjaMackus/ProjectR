@@ -55,7 +55,7 @@ $_SESSION['Sadala']='Registreties'; ?>
                        oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 
                        oninput="setCustomValidity('')"
                        title="E-Pasts" class="Ievade_Ievads"
-                       placeholder="E-pasta addrese" required>
+                       placeholder="E-pasta adrese" required>
                 <h2>Parole</h2>
                 <input type="password" name="Parole_1" id="Parole_1"
                        maxlength="30"

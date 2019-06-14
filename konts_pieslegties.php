@@ -17,7 +17,7 @@
                    oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 
                    oninput="setCustomValidity('')"
                    title="E-Pasts" class="Ievade_Ievads"
-                   placeholder="E-pasta addrese" required autofocus>
+                   placeholder="E-pasta adrese" required autofocus>
             <h2>Parole</h2>
                 <input type="password" name="Parole"
                    maxlength="30"

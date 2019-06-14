@@ -35,7 +35,7 @@
                oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 
                oninput="setCustomValidity('')"
                title="E-Pasts" class="Ievade_Ievads"
-               placeholder="E-pasta addrese" required>   
+               placeholder="E-pasta adrese" required>   
         
         <label class="Ievade_Paradit_Poga">
         <input class="Paradit_Poga" type="checkbox" value="1"><span class="Ievade_Paslepts"><p>Labot paroli</p>

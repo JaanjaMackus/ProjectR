@@ -1,23 +1,80 @@
 <?php
 $Mervieniba1_Nosaukums = "";
 $Mervieniba2_Nosaukums = "";
+$datums1_value = "";
+$datums2_value = "";
+$h1 = "";
+$h2 = "";
+$m1 = "";
+$m2 = "";
+$s1 = "";
+$s2 = "";
+$biezums = 1;
+$intervals = "hour";
 if(isset($_GET['filtrs'])){
     //05:29:38
     //SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 1 AND Dates BETWEEN '2016-03-09 05:29:38' AND '2016-03-09 05:52:38'
     //2016-03-09 05:52:38
+    
+    $string = "2016-03-09 05:52:38"; 
+    $str_arr = explode (" ", $string);  
+    print_r($str_arr);
+    $string = $str_arr[1]; 
+    $str_arr = explode (":", $string);  
+    print_r($str_arr); 
+    
+    
     if(isset($_GET['datums1'])&& $_GET['datums1'] != 0 ){
-        $datums1 = "AND Dates BETWEEN '".$_GET['datums1']."'";
+        if(isset($_GET['h1'])&& $_GET['h1'] != 0 ){
+            $h1 = $_GET['h1'];
+        }else {$h1 = "0";}
+        if(isset($_GET['m1'])&& $_GET['m1'] != 0 ){
+            $m1 = $_GET['m1'];
+        }else {$m1 = "0";}
+        if(isset($_GET['s1'])&& $_GET['s1'] != 0 ){
+            $s1 = $_GET['s1'];
+        }else {$s1 = "0";}
+        $datums1_value = $_GET['datums1'];
+        $datums1 = "AND Dates BETWEEN '".$_GET['datums1']." ".$h1.":".$m1.":".$s1."'";
+        if(isset($_GET['datums2']) && $_GET['datums2'] == 0){
+            $datums1 = "AND Dates > '".$_GET['datums1']." ".$h1.":".$m1.":".$s1."'";
+            $datums2 = "";
+        }else if(isset($_GET['datums2']) && $_GET['datums2'] != 0){
+            if(isset($_GET['h2'])&& $_GET['h2'] != 0 ){
+                $h2 = $_GET['h2'];
+            }else {$h2 = "0";}
+            if(isset($_GET['m2'])&& $_GET['m2'] != 0 ){
+                $m2 = $_GET['m2'];
+            }else {$m2 = "0";}
+            if(isset($_GET['s2'])&& $_GET['s2'] != 0 ){
+                $s2 = $_GET['s2'];
+            }else {$s2 = "0";}
+            $datums2_value = $_GET['datums2'];
+            $datums2 = " AND '".$_GET['datums2']." ".$h2.":".$m2.":".$s2."'";
+        }else{
+            $datums2 = "";
+        }
     }else{
         $datums1 = "";
-    }
-    if(isset($_GET['datums2']) && $_GET['datums2'] != 0){
-        $datums2 = " AND '".$_GET['datums2']."'";
-    }else{
-        $datums2 = "";
+        if(isset($_GET['datums2']) && $_GET['datums2'] != 0){
+            $datums2_value = $_GET['datums2'];
+            if(isset($_GET['h2'])&& $_GET['h2'] != 0 ){
+                $h2 = $_GET['h2'];
+            }else {$h2 = "0";}
+            if(isset($_GET['m2'])&& $_GET['m2'] != 0 ){
+                $m2 = $_GET['m2'];
+            }else {$m2 = "0";}
+            if(isset($_GET['s2'])&& $_GET['s2'] != 0 ){
+                $s2 = $_GET['s2'];
+            }else {$s2 = "0";}
+            $datums2 = " AND Dates < '".$_GET['datums2']." ".$h2.":".$m2.":".$s2."'";
+        }else{
+            $datums2 = "";
+        }
     }
 
     $sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = ".$_GET['mervieniba1']." $datums1 $datums2 ";
-    echo $sql;
+    echo "<p>".$sql."</p><br>";
     $Rezultats = $Datu_Baze->query($sql);
     $dataPoints1 = array();
     if($Rezultats){
@@ -40,36 +97,38 @@ if(isset($_GET['filtrs'])){
         }    
     }
     
+if(isset($_GET['intervals']) && $_GET['intervals'] != "" ){
+    $intervals = $_GET['intervals'];
 }else{
-
-
-    $sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 4 limit 500";
-    $Rezultats = $Datu_Baze->query($sql);
-    $dataPoints1 = array();
-
-    if ($Rezultats->num_rows > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_row($Rezultats)) {
-            $dataPoints1[] = array("x" => (strtotime($row[0])*1000), "y" => $row[1]); 
+    $intervals = "hour";
+}
+if(isset($_GET['biezums']) && $_GET['biezums'] != 0){
+    $biezums = $_GET['biezums'];
+}else{
+    $biezums = 1;
+}
+}else if(isset($_GET['filtrs_Saglabat'])){
+    if(isset($_SESSION['E_Pasts'])){
+        $sql = "INSERT INTO Dates, Vertiba FROM merijums Where ID_Mervieniba = ".$_GET['mervieniba1']." $datums1 $datums2 ";
+        echo "<p>".$sql."</p><br>";
+        $Rezultats = $Datu_Baze->query($sql);
+        $dataPoints1 = array();
+        if($Rezultats){
+        
         }
+        
+    }else{
+        echo "<h3 class='kluda'>Nepieciešams pieslēgties, lai saglabātu filtru, vai arī saglabājiet šīs lapas pilno adresi</h3><br>";
     }
-
-    $sql = "SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 5 limit 500";
-    $Rezultats2 = $Datu_Baze->query($sql);
-    $dataPoints2 = array();
-    if ($Rezultats2->num_rows > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_row($Rezultats2)) {
-            $dataPoints2[] = array("x" => (strtotime($row[0])*1000), "y" => $row[1]); 
-        }
-    }
-
+    
 }
 
 ?>
     <form method="get">
         <input type="hidden" name="Apskatit" value="<?php echo $ID_Projekts; ?>">
         <p class="filtrs">
+        <span class="Otra_Rinda">
+        Mērvienība 1: 
         <select name="mervieniba1">
         <option value="">--Tukš--</option>
         <?php
@@ -96,6 +155,7 @@ if(isset($_GET['filtrs'])){
         }
         ?>
         </select>
+        Mērvienība 2:
         <select name="mervieniba2">
         <option value="">--Tukš--</option>
         <?php
@@ -122,23 +182,34 @@ if(isset($_GET['filtrs'])){
         }
         ?>
         </select>
+        </span>
+        Datuma biežums: 
+        <select name="intervals">
+            <option <?php if($intervals == "second"){echo "selected";} ?> value="second">Sekunde</option>
+            <option <?php if($intervals == "minute"){echo "selected";} ?> value="minute">Minūte</option>
+            <option <?php if($intervals == "hour"){echo "selected";} ?> value="hour">Stunda</option>
+            <option <?php if($intervals == "day"){echo "selected";} ?> value="day">Diena</option>
+            
+        </select>
+        <input value="<?php echo $biezums; ?>" name="biezums" type="number" min="1"  placeholder="00">
         </p>
         <p class="filtrs">
-        <span class="Otra_Rinda">Datums NO: <input name="datums1" type="date"></span>
-        H: <input name="h1" type="number" min="0" max="23" placeholder="00">
-        M: <input name="m1" type="number" min="0" max="59" placeholder="00">
-        S: <input name="s1" type="number" min="0" max="59" placeholder="00">
+        <span class="Otra_Rinda">Datums NO: <input value="<?php echo $datums1_value ?>" name="datums1" type="date"></span>
+        H: <input value="<?php echo $h1 ?>" name="h1" type="number" min="0" max="23" placeholder="00">
+        M: <input value="<?php echo $m1 ?>" name="m1" type="number" min="0" max="59" placeholder="00">
+        S: <input value="<?php echo $s1 ?>" name="s1" type="number" min="0" max="59" placeholder="00">
         </p>
         
         <p class="filtrs">
-        <span class="Otra_Rinda">Datums LĪDZ: <input name="datums2" type="date"></span>
-        H: <input name="h2" type="number" min="0" max="23" placeholder="00">
-        M: <input name="m2" type="number" min="0" max="59" placeholder="00">
-        S: <input name="s2" type="number" min="0" max="59" placeholder="00">
+        <span class="Otra_Rinda">Datums LĪDZ: <input value="<?php echo $datums2_value ?>" name="datums2" type="date"></span>
+        H: <input value="<?php echo $h2 ?>" name="h2" type="number" min="0" max="23" placeholder="00">
+        M: <input value="<?php echo $m2 ?>" name="m2" type="number" min="0" max="59" placeholder="00">
+        S: <input value="<?php echo $s2 ?>" name="s2" type="number" min="0" max="59" placeholder="00">
         </p>
         
         
-        <input class='Ievade_Poga' name="filtrs" type="submit" value="Filtrēt">
+        <input class='Saura_Poga Ievade_Poga' name="filtrs" type="submit" value="Filtrēt">
+        <input class='Saura_Poga Ievade_Poga' name="filtrs_Saglabat" type="submit" value="Saglabāt filtru">
 
     </form>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -149,23 +220,23 @@ if(isset($_GET['filtrs'])){
         animationEnabled: true,
         zoomEnabled: true,
         title:{
-            text: "Dati no DB" // Jauzstaisa lai nosaukums ir izvele dropdown veida vai input veida
+            //text: "Dati no DB" // Jauzstaisa lai nosaukums ir izvele dropdown veida vai input veida
         },
         axisX:{
             valueFormatString: "YYYY-MM-DD HH:mm:ss",
-            intervalType: "hour", // Jauzstaisa lai ir izvele dropdown veida "second" "minute" "hour" "day"
-            interval: 4, // Jauzstaisa lai ir izvele dropdown veida - intervals starp nakamo datumu/laiku
+            intervalType: "<?php echo $intervals; ?>",
+            interval: <?php echo $biezums; ?>,
             title: "Datums"
         },
         axisY:{
-            title: "<?php echo $Mervieniba1_Nosaukums;  ?>",
+            title: "<?php echo $Mervieniba1_Nosaukums; ?>",
             titleFontColor: "#4F81BC",
             lineColor: "#4F81BC",
             labelFontColor: "#4F81BC",
             tickColor: "#4F81BC",
         },
         axisY2:{
-            title: "<?php echo $Mervieniba2_Nosaukums;  ?>",
+            title: "<?php echo $Mervieniba2_Nosaukums; ?>",
             titleFontColor: "#C0504E",
             lineColor: "#C0504E",
             labelFontColor: "#C0504E",
@@ -182,9 +253,9 @@ if(isset($_GET['filtrs'])){
         },
         data: [{
             type: "line",
-            name: "Mervieniba 1", // Jauzstaisa lai nosaukums ir izvele dropdown veida
+            name: "<?php echo $Mervieniba1_Nosaukums; ?>",
             markerSize: 0,
-            toolTipContent: "Laiks Mer.1: {x} <br>{name}: {y} W/m", // Jauzstaisa lai [W/m] ir izvele dropdown veida
+            toolTipContent: "Laiks Mer.1: {x} <br>{name}: {y}",
             showInLegend: true,
             xValueType: "dateTime",
             xValueFormatString: "HH:mm:ss",
@@ -192,9 +263,9 @@ if(isset($_GET['filtrs'])){
         },{
             type: "line",
             axisYType: "secondary",
-            name: "Mervieniba 2",
+            name: "<?php echo $Mervieniba2_Nosaukums; ?>",
             markerSize: 0,
-            toolTipContent: "Laiks Mer.2: {x} <br>{name}: {y} KPH", // Jauzstaisa lai KPH ir izvele dropdown veida
+            toolTipContent: "Laiks Mer.2: {x} <br>{name}: {y}",
             showInLegend: true,
             xValueType: "dateTime",
             xValueFormatString: "HH:mm:ss",
@@ -215,6 +286,10 @@ if(isset($_GET['filtrs'])){
 
     }
 </script>
+<div class="Atstarpe_Maza"></div>
+<?php if(!isset($_GET['filtrs'])){
+    echo "<br><br><h3>Izvēlieties vismaz vienu mērvienību, lai redzētu grafu</h3>";
+} ?>
 <div id="chartContainer" style="grafs"></div>
 <script type="text/javascript">grafs()</script>
 
