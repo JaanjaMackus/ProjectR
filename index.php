@@ -24,11 +24,11 @@ $_SESSION['Sadala']='Sakums';
     <div class="Atstarpe"></div>
     <div class="Saturs">
         <div class="Vidus">
-            <h1>Sveicināti datu vizuālās apskates lapā, kurā varat apskatīt citu veidotos projektus un pievienot savus!</h1>
+            <h1>Sveicināti datu vizuālās apskates vietnē, kurā varat apskatīt citu veidotos projektus un pievienot savus!</h1>
         </div>
-        <div class="blakus"><p>Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..Nozare "Lietu internets" kļūst aizvien populārāka ... .... .. tāpēc noderīga šī vietne, kurā var apkopot un pārskatīt iegūtos datus. .. .. ..</p>
+        <div class="blakus"><p class="teksta_atstarpe">Vietne paredzēta jebukaram iteresentam, kurš vēlas nodarboties ar dabas apstākļu novērošanu, vai vienkārši apskatīt citu veidotos projektus un to datus. Sistēmu iespējams izmantot jebkuram cilvēkam ar pamatzināšanām darbā ar datoru un iterneta pārlūkporgrammu. Lietotne paredzēta izmantot ar populārākajām intereneta pārlūkprogrammā. Papildus ir nepieciešamas iemaņas datu apstrādēs un analizēšanā, lai gan sistēma nodoršina pieeju šādiem resursiem, tomēr vēlamas pamatzināšanas. Kā arī radīt interesi un popularizēt datu apstrādes un datu vizualizēšanas iespējas Liepājas universitātē. Interneta vietnē paredzēta savu projektu izveidei un to publiskošanai kā arī līdzdalība esošajos projektos.</p>
         </div>
-        <div class="Attels"><p>attēls</p>
+        <div class="Attels">
         </div>
     </div>
 </body>

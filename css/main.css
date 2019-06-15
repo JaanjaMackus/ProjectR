@@ -8,6 +8,13 @@ p{
     font-size: 3vw;
     line-height: 3.5vw;
 }
+.teksta_atstarpe{
+    line-height: 3.6vw;
+    margin-top: 1vw;
+}
+.teksta_atstarpe::first-letter{
+    margin-left: 4vw;
+}
 h1{
     color: #062837;
     font-size: 4vw;
@@ -153,7 +160,7 @@ body {
     grid-column: 5/6;
 }
 .Smalks_1_5{
-    height: 40vw !important;
+    height: 40vw;
     background: red;
     grid-column: 1/5;
 }
@@ -174,10 +181,13 @@ body {
     grid-column: 1/2;
 }
 .Saturs .Attels{
+    background: url(../images/sakuma_apraksts.png) no-repeat;
+    background-size: contain;
     text-align: center;
-    background: #aabbcc;
     grid-column: 1/2;
-    height: 40vw;
+    width: 100%;
+    height: 60vw;
+    margin-left: 15vw;
 }
 .apraksts{
     margin-top: 1vw;
@@ -465,6 +475,13 @@ p{
     font-size: 1.3vw;
     line-height: 1.5vw;
 }
+.teksta_atstarpe{
+    line-height: 1.8vw;
+    margin-top: 5vw;
+}
+.teksta_atstarpe::first-letter{
+    margin-left: 2vw;
+}
 h1{
     font-size: 2vw;
     line-height: 3vw;
@@ -554,7 +571,9 @@ form .Otra_Rinda input{
     grid-column: 1/3;
 }
 .Saturs .Attels{
-    height: 20vw;
+    margin-left: 0;
+    width: 30vw;
+    height: 30vw;
     grid-column: 2/3;
 }
 .Saturs .blakus{
@@ -715,6 +734,10 @@ form .Saura_Poga:nth-child(even){
 p{
     font-size: 1vw;
     line-height: 1.2vw;
+}
+.teksta_atstarpe{
+    line-height: 1.5vw;
+    margin-top: 5vw;
 }
 h1{
     font-size: 1.6vw;
