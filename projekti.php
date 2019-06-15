@@ -10,10 +10,10 @@ include('db.php');
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Datu Vizualizēšana</title>
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
 </head>
 
 
