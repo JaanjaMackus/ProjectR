@@ -36,7 +36,7 @@ if (isset($_POST['Saglabat_Izmainas'])){
     if(empty($Uzvards)){ $Kludas[]="nepieciešams Uzvārds"; }
     if(strlen($Uzvards) > '20'){ $Kludas[]="uzvārds ir garāks par 20 simboliem"; }
     if(empty($E_Pasts)){ $Kludas[]="nepieciešams E-Pasts"; }
-    if(strlen($E_Pasts) > '20'){ $Kludas[]="E-Pasts ir garāks par 30 simboliem"; }
+    if(strlen($E_Pasts) > '50'){ $Kludas[]="E-Pasts ir garāks par 50 simboliem"; }
 
     // E-pasta pieejamības pārbaude
     if($Vecais_E_Pasts != $E_Pasts){

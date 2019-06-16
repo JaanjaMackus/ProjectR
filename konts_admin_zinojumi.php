@@ -22,10 +22,20 @@ if(mysqli_num_rows($Rezultats)!=0){
             }else{
                 $VardsUzvards = "Neeksistejoš";
             }
+            $Pieprasijums = "SELECT Nosaukums FROM projekts WHERE ID_Projekts=".$zinojums['ID_Projekts'];
+            $Projekts = mysqli_query($Datu_Baze, $Pieprasijums);
+            $Projekts = mysqli_fetch_assoc($Projekts);
+            if($Projekts){
+                $Nosaukums = $Projekts['Nosaukums'];
+            }else{
+                $Nosaukums = "Neeksistejoš";
+            }
+        
         
             echo "
             <div class='Projekts Konta_teksts'>
                 <h3>$VardsUzvards</h3>
+                <h3>$Nosaukums</h3>
                 <p>".$zinojums['Zina']."
                 <br><br><button class='konts_poga' type='submit' name='dzest' value='".$zinojums['ID_Zinojums']."'>Dzēst ziņojumu</button></p>
             </div>";

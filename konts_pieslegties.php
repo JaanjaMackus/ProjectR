@@ -11,7 +11,7 @@
         <form method='post' action='konts.php'>
             <h2>E-pasts</h2>
                 <input value="<?php echo $E_Pasts ?>"
-                   maxlength="30"
+                   maxlength="50"
                    type="email" name="E_Pasts" id="E_Pasts"
                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$"
                    oninvalid="setCustomValidity('E-Pastam nepieciešams @ simbols un adresse kura satur punktu')" 

@@ -17,7 +17,9 @@ if (isset($_POST['izveidot_projektu'])) {
     // Lietotāja datu pārbaude
     if(empty($Nosaukums)){ $Kludas[]="nepieciešams Nosaukums"; }
     if(empty($Apraksts_Iss)){ $Kludas[]="nepieciešams Īss apraksts"; }
+    if(strlen($Apraksts_Iss) > '500'){ $Kludas[]="Īsais apraksts ir garāks par 500 simboliem"; }
     if(empty($Apraksts)){ $Kludas[]="nepieciešams apraksts"; }
+    if(strlen($Apraksts) > '5000'){ $Kludas[]="Apraksts ir garāks par 5000 simboliem"; }
 
     // vārda pieejamības pārbaude
     $Pieprasijums = "SELECT * FROM projekts WHERE Nosaukums='$Nosaukums'";

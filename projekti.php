@@ -2,6 +2,7 @@
 
 session_start();
 $_SESSION['Sadala']='Projekti';
+$Kludas = array(); 
 
 // datubāzes konekcija
 include('db.php');
@@ -25,6 +26,25 @@ include('db.php');
     if(isset($_POST['zinot_sutit'])){
         mysqli_set_charset($Datu_Baze,"utf8");
         $Zina = trim(htmlspecialchars(mysqli_real_escape_string($Datu_Baze, $_POST['Apraksts'])));
+                                                                
+        if(empty($Zina)){ $Kludas[]="nepieciešama ziņa"; }
+        if(strlen($Zina) > '500'){ $Kludas[]="Ziņa ir garāka par 500 simboliem"; }
+               
+        if(count($Kludas)>0){
+            echo "<form class='Saturs Saturs_Smalks' method='post'>";
+            foreach ($Kludas as $Kluda){
+            echo "<p class='kluda'>$Kluda</p>";
+            }
+                ?>
+            <div class="Smalks_Pilns_1_5">
+                <textarea maxlength="500" type="text" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Ziņa līdz 500 simboliem" required></textarea>
+                <input class="konts_poga" type="submit" name="zinot_sutit" value="Sūtīt ziņu">
+                <input type="hidden" name="Projekta_ID" value="<?php echo $_POST['zinot']; ?>">
+                </form>
+            </div>
+
+            <?php
+        }else{
         $E_Pasts = $_SESSION['E_Pasts'];
         $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
@@ -41,12 +61,12 @@ include('db.php');
         }else{
             echo "neatrada lietotāju";
         }
-        
+        }
     }else if(isset($_POST['zinot'])){
         echo "<form class='Saturs Saturs_Smalks' method='post'>";
         ?>
     <div class="Smalks_Pilns_1_5">
-        <textarea type="text" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Ziņa līdz 500 simboliem" required></textarea>
+        <textarea maxlength="500" type="text" name="Apraksts" class="Ievade_Gars Ievade_Ievads" placeholder="Ziņa līdz 500 simboliem" required></textarea>
         <input class="konts_poga" type="submit" name="zinot_sutit" value="Sūtīt ziņu">
         <input type="hidden" name="Projekta_ID" value="<?php echo $_POST['zinot']; ?>">
         </form>
