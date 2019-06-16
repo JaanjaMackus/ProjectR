@@ -12,12 +12,14 @@
                 }else{
                     echo "neatrada lietotāju";
                 }
+                //navigacija visiem kontiem
                 ?></p></li>
             <a href="?Saturs=1"><li <?php if($Konts_Izvelets==1){ echo "class='Konts_Izvelets'";} ?>>Filtri</li></a>
             <a href="?Saturs=2"><li <?php if($Konts_Izvelets==2){ echo "class='Konts_Izvelets'";} ?>>Mani Projekti</li></a>
             <a href="?Saturs=3"><li <?php if($Konts_Izvelets==3){ echo "class='Konts_Izvelets'";} ?>>Konta Iestatījumi</li></a>
             <?php
             if($Lietotajs['Tiesibas'] == 1){
+                //navigacija administratoriem
                 $skaits = 0;
                 $Pieprasijums = "SELECT count(ID_Projekts) as skaits from projekts where VaiPublisks=2";
                 $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);

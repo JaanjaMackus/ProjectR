@@ -15,8 +15,6 @@
         }
     }
     
-    
-    
     $E_Pasts = $_SESSION['E_Pasts'];
     mysqli_set_charset($Datu_Baze,"utf8");
     $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
@@ -27,7 +25,7 @@
         $Pieprasijums = "SELECT * FROM atskaite WHERE ID_Konts=$ID_Konts";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         while($Atskaite = mysqli_fetch_assoc($Rezultats)){
-//projekti.php?Apskatit=1&mervieniba1=3&mervieniba2=3&intervals=hour&biezums=1&datums1=2019-06-10&h1=&m1=&s1=&datums2=2019-06-08&h2=&m2=&s2=&Nosaukums=&filtrs=Filtr%C4%93t
+//parāda filtru
             $datums1 = $Atskaite['No_Datums'];
             $datums1 = explode (" ", $datums1);
             $laiks1 = $datums1[1];

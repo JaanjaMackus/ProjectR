@@ -3,8 +3,10 @@
 <div class="Smalks_Pilns_1_5">
     <?php
     
+    $sakne = $_SERVER["DOCUMENT_ROOT"]."/prodata";
     
     if(isset($_POST['Labot_Dalibnieku']) || isset($_POST['Pievienot_Dalibnieku'])){
+        //saglabā sesijā lai nepazaudētu pagaidu izmaiņas
         $_SESSION['Projekta_Nosaukums'] = $_POST['Nosaukums'];
         $_SESSION['Projekta_Apraksts_Iss'] = $_POST['Apraksts_Iss'];
         $_SESSION['Projekta_Apraksts'] = $_POST['Apraksts'];
@@ -101,7 +103,7 @@
                         $_SESSION['Projekta_Nosaukums'] = $Nosaukums;
                         $_SESSION['Projekta_Apraksts_Iss'] = $Apraksts_Iss;
                         $_SESSION['Projekta_Apraksts'] = $Apraksts;
-                        include('konts_labot_projektu_forma.php');
+                        include 'konts_labot_projektu_forma.php';
                     }else{
                         echo "<h3>Jūs nevarat labot projektu, kas nepieder jums</h3>";
                     }

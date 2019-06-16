@@ -8,6 +8,7 @@
     </form>
     <br><br>
 <?php
+    //ja atrada pieprasītos e-pastus
     if ($Eksiste==1 && mysqli_num_rows($Rezultats)!=0){
         while($Konts = mysqli_fetch_assoc($Rezultats)){
                 echo "
@@ -16,6 +17,7 @@
                 ";
         }
     }else{
+    //ja neatrada epastus parāda visus lietotājus
         $Pieprasijums = "SELECT * FROM konts";
         $Rezultats = mysqli_query($Datu_Baze, $Pieprasijums);
         while($Konts = mysqli_fetch_assoc($Rezultats)){

@@ -39,7 +39,7 @@
         
         <label class="Ievade_Paradit_Poga">
         <input class="Paradit_Poga" type="checkbox" value="1"><span class="Ievade_Paslepts"><p>Labot paroli</p>
-        <h2 class="Ievade_Paslepts">Parole</h2>
+        <h2 class="Ievade_Paslepts">Jaunā parole</h2>
         <input type="password" name="Parole_1" id="Parole_1"
                maxlength="30"
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}"

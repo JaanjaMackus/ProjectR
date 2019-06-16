@@ -1,11 +1,4 @@
 <?php
-//balts// F8F8F8
-//peleks/ 767F88
-
-//peleks/ aabbcc
-//sarkans DD0000
-//tumsais 062836
-
 session_start();
 $_SESSION['Sadala']='Sakums';
 ?>

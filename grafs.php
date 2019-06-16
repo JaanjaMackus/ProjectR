@@ -13,11 +13,8 @@ $Nosaukums = "";
 $biezums = 1;
 $intervals = "hour";
 if(isset($_GET['filtrs'])){
-    //05:29:38
-    //SELECT Dates, Vertiba FROM merijums Where ID_Mervieniba = 1 AND Dates BETWEEN '2016-03-09 05:29:38' AND '2016-03-09 05:52:38'
-    //2016-03-09 05:52:38    
-    
     if(isset($_GET['datums1'])&& $_GET['datums1'] != 0 ){
+//ja ir pirmais datums
         if(isset($_GET['h1'])&& $_GET['h1'] != 0 ){
             $h1 = $_GET['h1'];
         }else {$h1 = "0";}
@@ -30,9 +27,11 @@ if(isset($_GET['filtrs'])){
         $datums1_value = $_GET['datums1'];
         $datums1 = "AND Dates BETWEEN '".$_GET['datums1']." ".$h1.":".$m1.":".$s1."'";
         if(isset($_GET['datums2']) && $_GET['datums2'] == 0){
+    //ja nav otrais datums
             $datums1 = "AND Dates > '".$_GET['datums1']." ".$h1.":".$m1.":".$s1."'";
             $datums2 = "";
         }else if(isset($_GET['datums2']) && $_GET['datums2'] != 0){
+    //ja ir otrais datums
             if(isset($_GET['h2'])&& $_GET['h2'] != 0 ){
                 $h2 = $_GET['h2'];
             }else {$h2 = "0";}
@@ -48,8 +47,10 @@ if(isset($_GET['filtrs'])){
             $datums2 = "";
         }
     }else{
+//ja nav pirmais datums
         $datums1 = "";
         if(isset($_GET['datums2']) && $_GET['datums2'] != 0){
+    //ja ir otrais datums
             $datums2_value = $_GET['datums2'];
             if(isset($_GET['h2'])&& $_GET['h2'] != 0 ){
                 $h2 = $_GET['h2'];
@@ -71,7 +72,7 @@ if(isset($_GET['filtrs'])){
     $dataPoints1 = array();
     if($Rezultats){
         if ($Rezultats->num_rows > 0) {
-            // output data of each row
+            //saliek visas vērtības masīvā
             while($row = mysqli_fetch_row($Rezultats)) {
                 $dataPoints1[] = array("x" => (strtotime($row[0])*999.9975305), "y" => $row[1]); 
             }
@@ -82,12 +83,14 @@ if(isset($_GET['filtrs'])){
     $dataPoints2 = array();
     if($Rezultats2){
         if ($Rezultats2->num_rows > 0) {
-            // output data of each row
+            //saliek visas vērtības masīvā
             while($row = mysqli_fetch_row($Rezultats2)) {
                 $dataPoints2[] = array("x" => (strtotime($row[0])*999.9975305), "y" => $row[1]); 
             }
         }    
     }
+    
+//iegūst papildus informāciju no filtra izvēlēm
     
 if(isset($_GET['intervals']) && $_GET['intervals'] != "" ){
     $intervals = $_GET['intervals'];
@@ -105,6 +108,7 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
 
 }else if(isset($_GET['filtrs_Saglabat'])){
     if(isset($_SESSION['E_Pasts'])){
+//ja ir uzspiest saglabāt filtru un ir pieslēdzies savāc visu informāciju un saglabā filtru
         $E_Pasts = $_SESSION['E_Pasts'];
         mysqli_set_charset($Datu_Baze,"utf8");
         $Pieprasijums = "SELECT * FROM konts WHERE E_Pasts= BINARY '$E_Pasts'";
@@ -145,7 +149,7 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
     }
     
 }
-
+//filtrēšanas iespējas
 ?>
     <form method="get">
         <input type="hidden" name="Apskatit" value="<?php echo $ID_Projekts; ?>">
@@ -240,13 +244,13 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
     </form>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
+//grafa izveides funkcija, kura izmanto iepriekš sagādāto informāciju
     function grafs() {
 
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         zoomEnabled: true,
         title:{
-            //text: "Dati no DB" // Jauzstaisa lai nosaukums ir izvele dropdown veida vai input veida
         },
         axisX:{
             valueFormatString: "YYYY-MM-DD HH:mm:ss",
@@ -315,7 +319,9 @@ if(isset($_GET['Nosaukums']) && $_GET['Nosaukums'] != ""){
 <div class="Atstarpe_Maza"></div>
 <?php if(!isset($_GET['filtrs'])){
     echo "<br><br><h3>Izvēlieties vismaz vienu mērvienību, lai redzētu grafu</h3>";
-} ?>
+} 
+//grafa turētāja bloks un grafa izveides izsaukšana
+?>
 <div id="chartContainer" style="grafs"></div>
 <script type="text/javascript">grafs()</script>
 

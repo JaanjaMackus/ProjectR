@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 
-
+/*
+Izmantotās krāsas
+balts       F8F8F8
+peleks      aabbcc
+sarkans     DD0000
+tumsi zils  062836
 /* /////////////////////////////////////////////////////////////////// OVERALL /// */
 
 p{
@@ -100,7 +105,12 @@ form .Otra_Rinda input{
 .Smalks_Pilns .Zinojums_Poga button:hover{
     cursor: pointer;
 }
-
+.AdminPogas{
+    margin-left: 5vw;
+}
+.AdminPogas button:first-of-type{
+    float: left;
+}
 
 
 
@@ -547,12 +557,15 @@ form .Otra_Rinda input{
     margin-left: 2vw;
     font-size: 1vw;
 }
-    
+.AdminPogas{
+    margin-left: 20vw;
+}
+
     
 
     
     
-.Saturs {
+.Saturs{
     grid-template-columns: 3fr 2fr;
 }
 .Saturs_Smalks{

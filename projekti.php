@@ -120,7 +120,7 @@ include('db.php');
                 
                 if($Lietotajs['Tiesibas'] == 1){
                     ?>
-                <form class="AdminPogas" method='post'>
+                <form class="AdminPogas Smalks_Pilns_1_5" method='post'>
                     <input type="hidden" name="ID_Projekts" value="<?php echo $ID_Projekts; ?>">
                     <button class='konts_poga' type='submit' name='Publicesana' value='Noraidit'>Noraidīt</button>
                     <button class='konts_poga' type='submit' name='Publicesana' value='Apstiprinat'>Apstiprināt</button><br><br>
